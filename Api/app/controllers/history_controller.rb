@@ -32,6 +32,22 @@ class HistoryController < ApplicationController
 
   end
 
+  def add_like
+    history = History.find(params[:history][:id])
+    if !history.nil?
+      history.likes = history.likes + 1
+
+      if history.save
+        jsonRespose(history, 200)
+      else
+        jsonRespose(history.errors, 400)
+      end
+    else
+      jsonRespose(history, 500)
+    end
+
+  end
+
 
   def show
   end
