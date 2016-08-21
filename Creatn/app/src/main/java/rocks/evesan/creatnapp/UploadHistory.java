@@ -93,6 +93,8 @@ public class UploadHistory extends AppCompatActivity {
                     public void onResponse(Call<History> call, Response<History> response) {
                         progress.dismiss();
                         if (response.isSuccessful()) {
+                            SnackBarError.getSnackBar("La calle agradece tu historia").show();
+
                             finish();
                         } else {
                             SnackBarError.getSnackBar(":( Errors místicos").show();
@@ -106,6 +108,8 @@ public class UploadHistory extends AppCompatActivity {
 
                     }
                 });
+            } else {
+                SnackBarError.getSnackBar("Dále un nombre a tu historia.").show();
             }
         }
     };

@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
     private LocationManager locationManager;
     private MediaPlayer notification;
+    private MediaPlayer push_button;
     private RecordButton mRecordButton;
     private Location lastKnownLocation;
 
@@ -48,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
         mRecordButton.setOnTouchListener(recordListener);
 
         notification = MediaPlayer.create(this, R.raw.the_calling);
+        push_button = MediaPlayer.create(this, R.raw.served);
         locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
         getLastLocation();
 
@@ -64,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
                     mRecordButton.prepare();
                     mRecordButton.start();
                     mRecordButton.setImageDrawable(getResources().getDrawable(R.drawable.mainbuttom_min));
+                    push_button.start();
                     break;
                 case MotionEvent.ACTION_UP:
                     mRecordButton.stop();
@@ -96,10 +99,19 @@ public class MainActivity extends AppCompatActivity {
 
                 @Override
                 public void onResponse(Call<List<History>> call, Response<List<History>> response) {
-                    notification.start();
-                    Intent i = new Intent(MainActivity.this, NearbyHistory.class);
-                    i.putExtra("list", (Serializable) response.body() );
-                    startActivity(i);
+                    if( response.isSuccessful() ) {
+                        if (response.body().size() > 0) {
+                            notification.start();
+                            Intent i = new Intent(MainActivity.this, NearbyHistory.class);
+                            i.putExtra("list", (Serializable) response.body() );
+                            startActivity(i);
+                        } else {
+                            SnackBarError.getSnackBar("No hay historias en este lugar, sigue buscando ...").show();
+                        }
+                    } else {
+                        SnackBarError.getSnackBar("Some random error :C").show();
+                    }
+
                 }
 
                 @Override
