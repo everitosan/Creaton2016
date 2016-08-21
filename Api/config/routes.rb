@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   root 'history#index'
   post 'history' => 'history#create'
+
+  post 'history/search' => 'location#search'
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 

@@ -18,7 +18,8 @@ ActiveRecord::Schema.define(version: 20160820224349) do
 
   create_table "histories", force: :cascade do |t|
     t.string   "name"
-    t.string   "location"
+    t.string   "latitude"
+    t.string   "longitude"
     t.string   "url"
     t.integer  "likes",      default: 0
     t.datetime "created_at",             null: false
