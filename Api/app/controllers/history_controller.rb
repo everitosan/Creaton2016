@@ -4,7 +4,7 @@ class HistoryController < ApplicationController
 
   def index
     histories = History.all
-    jsonRespose(histories)
+    jsonRespose(histories, 200)
   end
 
   def create
