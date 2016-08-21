@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">CreatnApp</string>
+
+    <string name="permission_denied"> Sorry, location need to be enabled  </string>
+    <string name="network_error"> Sorry, mysterious problem :(  </string>
+    <string name="nearby_title"> Hey! Hay historias cerca </string>
 </resources>

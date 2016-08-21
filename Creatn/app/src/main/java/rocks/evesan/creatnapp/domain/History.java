@@ -1,9 +1,18 @@
 package rocks.evesan.creatnapp.domain;
 
+import java.io.Serializable;
+
 /**
  * Created by evesan on 8/21/16.
  */
-public class History {
+public class History implements Serializable{
+
+    private String name;
+    private String latitude;
+    private String longitude;
+    private String url;
+    private String likes;
+
     public String getName() {
         return name;
     }
@@ -44,10 +53,6 @@ public class History {
         this.likes = likes;
     }
 
-    private String name;
-    private String latitude;
-    private String longitude;
-    private String url;
-    private String likes;
+
 
 }
