@@ -23,7 +23,7 @@ public interface apiService {
 
     @Multipart
     @POST("history")
-    Call <History> postHistory( @Part MultipartBody.Part h);
+    Call <History> postHistory(@Part MultipartBody.Part h, @Part MultipartBody.Part la, @Part MultipartBody.Part lo, @Part MultipartBody.Part f);
 
     @POST("history/like")
     Call <History> likeHistory(@Body History h);

@@ -8,13 +8,17 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/background_main"
     tools:context="rocks.evesan.creatnapp.MainActivity">
 
     <rocks.evesan.creatnapp.ui.RecordButton
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:text="Record"
         android:id="@+id/record"
+        android:scaleType="fitCenter"
+        android:background="@color/transparent"
+        android:src ="@drawable/mainbuttom"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:checked="false" />

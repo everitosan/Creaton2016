@@ -5,6 +5,7 @@ import android.media.MediaRecorder;
 import android.os.Environment;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.widget.ImageButton;
 import android.widget.ToggleButton;
 
 import java.io.IOException;
@@ -12,7 +13,7 @@ import java.io.IOException;
 /**
  * Created by evesan on 8/21/16.
  */
-public class RecordButton extends ToggleButton {
+public class RecordButton extends ImageButton {
 
     private MediaRecorder mRecorder = null;
     private String mFileName;

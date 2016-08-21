@@ -17,6 +17,9 @@ public class NearbyHistory extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nearby_history);
 
+        getSupportActionBar().hide();
+
+
         Intent i = getIntent();
         List<History> list =(List<History>) i.getSerializableExtra("list");
 

@@ -10,7 +10,10 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MotionEvent;
+import android.view.View;
 import android.widget.CompoundButton;
+import android.widget.ImageButton;
 
 import java.io.IOException;
 import java.io.Serializable;
@@ -30,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private LocationManager locationManager;
     private MediaPlayer notification;
     private RecordButton mRecordButton;
+    private Location lastKnownLocation;
 
 
     @Override
@@ -37,31 +41,42 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        getSupportActionBar().hide();
+
         SnackBarError.init( findViewById(R.id.wrapper) );
 
         mRecordButton = (RecordButton) findViewById(R.id.record);
-        mRecordButton.setOnCheckedChangeListener(recordListener);
+        mRecordButton.setOnTouchListener(recordListener);
 
         notification = MediaPlayer.create(this, R.raw.the_calling);
         locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
         getLastLocation();
 
+        getSupportActionBar().hide();
 
     }
 
-    public CompoundButton.OnCheckedChangeListener recordListener = new CompoundButton.OnCheckedChangeListener() {
-        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-            if (isChecked) { //Record audio
-                mRecordButton.prepare();
-                mRecordButton.start();
-            } else { //stop recording and show preview
-                mRecordButton.stop();
-                mRecordButton.release();
-                Intent i = new Intent(MainActivity.this, UploadHistory.class);
+    public View.OnTouchListener recordListener = new View.OnTouchListener() {
 
-                startActivity(i);
+        @Override
+        public boolean onTouch(View v, MotionEvent event) {
+            switch (event.getAction()){
+                case MotionEvent.ACTION_DOWN:
+                    mRecordButton.prepare();
+                    mRecordButton.start();
+                    mRecordButton.setImageDrawable(getResources().getDrawable(R.drawable.mainbuttom_min));
+                    break;
+                case MotionEvent.ACTION_UP:
+                    mRecordButton.stop();
+                    mRecordButton.release();
+                    Intent i = new Intent(MainActivity.this, UploadHistory.class);
+                    i.putExtra("latitude", Double.toString(lastKnownLocation.getLatitude()));
+                    i.putExtra("longitude", Double.toString(lastKnownLocation.getLongitude()));
+                    mRecordButton.setImageDrawable(getResources().getDrawable(R.drawable.mainbuttom));
+                    startActivity(i);
+                    break;
+
             }
+            return false;
         }
     };
 
@@ -71,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
         if (permission) {
             String locationProvider = LocationManager.GPS_PROVIDER;
 
-            Location lastKnownLocation = locationManager.getLastKnownLocation(locationProvider);
+            lastKnownLocation = locationManager.getLastKnownLocation(locationProvider);
 
             searchData data = new searchData(Double.toString(lastKnownLocation.getLatitude()),  Double.toString(lastKnownLocation.getLongitude()) , "0");
 

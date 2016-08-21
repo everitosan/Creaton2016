@@ -1,7 +1,16 @@
 <resources>
-    <string name="app_name">CreatnApp</string>
+    <string name="app_name">Calles Parlantes</string>
 
     <string name="permission_denied"> Sorry, location need to be enabled  </string>
     <string name="network_error"> Sorry, mysterious problem :(  </string>
-    <string name="nearby_title"> Hey! Hay historias cerca </string>
+    <string name="nearby_title"> ¡Hey!  </string>
+    <string name="nearby_title_des"> Hay historias por descubrir. </string>
+
+    <!-- Categories -->
+    <string name="Amor"> Amor </string>
+    <string name="Crime"> Crimen </string>
+    <string name="Mitos"> Mitos Urrbanos </string>
+    <string name="Relatos"> Relatos Históricos </string>
+
+    <string name="clasifica_tu"> Clasifica tu historia </string>
 </resources>
