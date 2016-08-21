@@ -18,6 +18,7 @@
   }
 ]
  ```
+ ___
 
  - [POST] /history   
  > Creates a new History.   
@@ -46,6 +47,8 @@
 }  
 ```  
 
+___
+
 - [POST] /history/like  
 > Likes a history.   
 
@@ -65,7 +68,7 @@
   "updated_at": "2016-08-21T05:55:54.761Z"
 }
 ```
-
+___
 
 - [POST] /history/search  
 > Return nearby audios.   
