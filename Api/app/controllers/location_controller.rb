@@ -1,14 +1,17 @@
 class LocationController < ApplicationController
 
   def search
-    user_postion = toRadians(user_location_params)
+    user_info = toRadians(user_location_params)
 
-    histories = History.includes(:tags).all
+    if params[:user_info][:purged] == "1"
+      histories = History.where('likes > 5').includes(:tags)
+    else
+      histories = History.includes(:tags).all
+    end
     near_histories = []
 
     for i in(0..( histories.length-1) )
-      if get_distance( user_postion, toRadians(histories[i]) ) < 100
-        logger.info "near"
+      if get_distance( user_info, toRadians(histories[i]) ) < 100
         near_histories.push(histories[i])
       end
     end
@@ -31,6 +34,6 @@ class LocationController < ApplicationController
 
   private
     def user_location_params
-      params.require(:user_location).permit(:longitude, :latitude)
+      params.require(:user_info).permit(:longitude, :latitude, :purged)
     end
 end
