@@ -1,10 +1,10 @@
 class HistoryController < ApplicationController
-  before_action :set_default_response_format
-   skip_before_filter :verify_authenticity_token
+  skip_before_filter :verify_authenticity_token
 
   def index
-    histories = History.all
-    jsonRespose(histories, 200)
+    histories = History.includes(:tags).all
+    jsonRespose(histories.to_json( :include => [:tags] ), 200)
+
   end
 
   def create
@@ -21,7 +21,7 @@ class HistoryController < ApplicationController
       if upload(file, file_path)
         history = History.new(history_params(m_params))
         if history.save
-          jsonRespose(history, 200)
+          jsonRespose(history.to_json( :include => [:tags] ), 200)
         else
           jsonRespose(history.errors, 400)
         end
@@ -32,8 +32,6 @@ class HistoryController < ApplicationController
 
   end
 
-  def searchByLocation
-  end
 
   def show
   end
@@ -41,16 +39,10 @@ class HistoryController < ApplicationController
   def destroy
   end
 
-
-  def jsonRespose(object, status)
-    respond_to do |format|
-        format.json { render json: object ,  status: status}
-    end
-  end
-
   private
+
     def history_params(m_params)
-        m_params.require(:history).permit(:name, :location, :url)
+        m_params.require(:history).permit(:name, :latitude, :longitude, :url)
     end
 
     def upload (history_audio, file_path)
@@ -58,11 +50,6 @@ class HistoryController < ApplicationController
       File.open(file_path, 'wb') do |file|
         file.write(history_audio.read)
       end
-    end
-
-  protected
-    def set_default_response_format
-      request.format = :json
     end
 
 end

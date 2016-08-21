@@ -4,7 +4,10 @@ class History < ActiveRecord::Base
   validates :name,
             presence: true
 
-  validates :location,
+  validates :latitude,
+            presence: true
+
+  validates :longitude,
             presence: true
 
   validates :url,
