@@ -49,9 +49,9 @@
 - [POST] /history/like  
 > Likes a history.   
 
-Params required into and *history* Object:  
- - [:id]  
-   Id of the audio to like  
+ Params required into and *history* Object:  
+  - [:id]  
+    Id of the audio to like  
 
 ```
 {
@@ -70,13 +70,13 @@ Params required into and *history* Object:
 - [POST] /history/search  
 > Return nearby audios.   
 
-Params required into and *user_info* Object:  
- - [:longitude]  
-   Longitude of the user  
- - [:latitude]  
-   Latitude of the user  
- - [:purged]  
-   Flag that determines the mode of search  
+ Params required into and *user_info* Object:  
+  - [:longitude]  
+    Longitude of the user  
+  - [:latitude]  
+    Latitude of the user  
+  - [:purged]  
+    Flag that determines the mode of search  
 
 ```
 [
