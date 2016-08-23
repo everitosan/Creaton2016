@@ -1,0 +1,32 @@
+  [1m[36m (130.9ms)[0m  [1mDROP DATABASE IF EXISTS "Api_test"[0m
+  [1m[35m (375.7ms)[0m  CREATE DATABASE "Api_test" ENCODING = 'unicode'
+  [1m[36mSQL (1.6ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (18.5ms)[0m  CREATE TABLE "histories" ("id" serial primary key, "name" character varying, "latitude" character varying, "longitude" character varying, "url" character varying, "likes" integer DEFAULT 0, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) 
+  [1m[36m (8.4ms)[0m  [1mCREATE TABLE "histories_tags" ("id" serial primary key, "tag_id" integer, "history_id" integer) [0m
+  [1m[35m (6.4ms)[0m  CREATE TABLE "tags" ("id" serial primary key, "name" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) 
+  [1m[36m (2.5ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL) [0m
+  [1m[35m (1.6ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36m (0.4ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (1.0ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160820224349')
+  [1m[36m (0.4ms)[0m  [1mINSERT INTO "schema_migrations" (version) VALUES ('20160820223137')[0m
+  [1m[35m (0.3ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160820223214')
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (2.9ms)[0m  ALTER TABLE "histories" DISABLE TRIGGER ALL;ALTER TABLE "histories_tags" DISABLE TRIGGER ALL;ALTER TABLE "tags" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mFixture Delete (1.8ms)[0m  DELETE FROM "histories"
+  [1m[36mFixture Insert (1.1ms)[0m  [1mINSERT INTO "histories" ("created_at", "updated_at", "id") VALUES ('2016-08-23 21:02:15', '2016-08-23 21:02:15', 980190962)[0m
+  [1m[35mFixture Insert (0.3ms)[0m  INSERT INTO "histories" ("created_at", "updated_at", "id") VALUES ('2016-08-23 21:02:15', '2016-08-23 21:02:15', 298486374)
+  [1m[36mFixture Delete (0.7ms)[0m  [1mDELETE FROM "tags"[0m
+  [1m[35mFixture Insert (0.5ms)[0m  INSERT INTO "tags" ("created_at", "updated_at", "id") VALUES ('2016-08-23 21:02:15', '2016-08-23 21:02:15', 980190962)
+  [1m[36mFixture Insert (0.3ms)[0m  [1mINSERT INTO "tags" ("created_at", "updated_at", "id") VALUES ('2016-08-23 21:02:15', '2016-08-23 21:02:15', 298486374)[0m
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.3ms)[0m  [1mALTER TABLE "histories" ENABLE TRIGGER ALL;ALTER TABLE "histories_tags" ENABLE TRIGGER ALL;ALTER TABLE "tags" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+---------------------------------------------
+HistoryControllerTest: test_location_distance
+---------------------------------------------
+Processing by HistoryController#index as HTML
+  [1m[36mHistory Load (0.8ms)[0m  [1mSELECT "histories".* FROM "histories"[0m
+  [1m[35mHABTM_Tags Load (0.7ms)[0m  SELECT "histories_tags".* FROM "histories_tags" WHERE "histories_tags"."history_id" IN (980190962, 298486374)
+Completed 200 OK in 38ms (Views: 0.2ms | ActiveRecord: 2.6ms)
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
