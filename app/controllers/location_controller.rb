@@ -13,7 +13,7 @@ class LocationController < ApplicationController
     for i in(0..( histories.length-1) )
       distance = get_distance( user_info, histories[i] )
       logger.info "Distance to sounds #{distance}"
-      if get_distance( user_info, histories[i] ) < 0.156
+      if get_distance( user_info, histories[i] ) < 0.200 #distance set to less than 200 meters
         near_histories.push(histories[i])
       end
     end
