@@ -10,4 +10,9 @@
         android:toScene="@layout/ready_button"
         android:transition="@transition/fade_out_listen"/>
 
+    <transition
+        android:fromScene="@layout/listen_recorded"
+        android:toScene="@layout/set_tag_name_scene"
+        android:transition="@transition/show_tags_to_post"/>
+
 </transitionManager>

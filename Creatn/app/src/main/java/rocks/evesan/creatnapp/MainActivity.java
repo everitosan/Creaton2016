@@ -12,7 +12,6 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.transition.Scene;
-import android.transition.Transition;
 import android.transition.TransitionInflater;
 import android.transition.TransitionManager;
 import android.util.Log;
@@ -43,10 +42,13 @@ public class MainActivity extends AppCompatActivity {
     private String lProvider;
 
     private ViewGroup rootScene;
-    private Scene ready_buttonScene, listen_recordedScene;
+    private Scene ready_buttonScene, listen_recordedScene, setTagNameScene;
     private TransitionManager mTransitionManager;
 
     private String NOHISTORIES;
+
+    private static final int UPDATE_LOCATION_TIME = 1000*3*60;
+    private static final int UPDATE_LOCATION_DISCTANCE = 200;
 
 
     private SwipeRefreshLayout swipeContainer;
@@ -92,6 +94,7 @@ public class MainActivity extends AppCompatActivity {
         rootScene = (ViewGroup) findViewById(R.id.wrapper);
         ready_buttonScene = Scene.getSceneForLayout(rootScene, R.layout.ready_button, this);
         listen_recordedScene = Scene.getSceneForLayout(rootScene, R.layout.listen_recorded, this);
+        setTagNameScene = Scene.getSceneForLayout(rootScene, R.layout.set_tag_name_scene, this);
 
         mTransitionManager = TransitionInflater.from(this).inflateTransitionManager(R.transition.transition_manager, rootScene);
     }
@@ -108,14 +111,9 @@ public class MainActivity extends AppCompatActivity {
                 case MotionEvent.ACTION_UP:
                     mRecordButton.stop();
                     mRecordButton.release();
-                    //Intent i = new Intent(MainActivity.this, UploadHistory.class);
-                    //i.putExtra("latitude", Double.toString(currentLocation.getLatitude()));
-                    //i.putExtra("longitude", Double.toString(currentLocation.getLongitude()));
                     mRecordButton.setImageDrawable(getResources().getDrawable(R.drawable.record_button));
                     mTransitionManager.transitionTo(listen_recordedScene);
-                    //startActivity(i);
                     break;
-
             }
             return false;
         }
@@ -143,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
             currentLocation = lastKnownLocation;
             searchHistories(lastKnownLocation);
             //enable repetitive scan of location
-            locationManager.requestLocationUpdates(lProvider, 2*60*1000, 200, locationListener);
+            locationManager.requestLocationUpdates(lProvider, UPDATE_LOCATION_TIME, UPDATE_LOCATION_DISCTANCE, locationListener);
         } else {
             SnackBarError.getSnackBar( getResources().getString(R.string.permission_denied) ).show();
         }
@@ -190,6 +188,7 @@ public class MainActivity extends AppCompatActivity {
             mp.setDataSource(mRecordButton.getFileName());
             mp.prepare();
             mp.start();
+            SnackBarError.getSnackBar( Integer.toString( mp.getDuration() ) ).show();
         } catch (IOException e) {
             Log.e("TAG", "prepare() failed");
         }
@@ -198,6 +197,11 @@ public class MainActivity extends AppCompatActivity {
     public void deleteRecord(View v) {
         mTransitionManager.transitionTo(ready_buttonScene);
         setListeners();
+    }
+
+    public void updateRecord(View v) {
+        mTransitionManager.transitionTo(setTagNameScene);
+
     }
     @Override
     public void onBackPressed() {

@@ -1,0 +1,84 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scene_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_port"
+
+    >
+
+
+    <TableLayout
+        android:id="@+id/tags_name_table"
+        android:layout_marginTop="150dp"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_marginEnd="40dp"
+        android:layout_marginStart="40dp"
+        android:background="@color/white"
+        android:paddingTop="40dp"
+        android:paddingBottom="10dp"
+        android:paddingEnd="10dp"
+        android:paddingStart="10dp"
+        android:stretchColumns="*"
+        android:layout_centerHorizontal="true"
+        >
+        <TableRow
+            android:layout_width="match_parent"
+            android:gravity="center"
+            >
+            <TextView
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:textColor="@color/cardview_dark_background"
+                android:layout_height="wrap_content"
+                android:text="@string/setNameTxt"/>
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_gravity="center">
+            <EditText
+                android:backgroundTint="@color/colorAccent"
+                android:textColor="@color/green"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"/>
+        </TableRow>
+
+        <TableRow>
+            <TextView
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:textColor="@color/cardview_dark_background"
+                android:layout_height="wrap_content"
+                android:text="@string/clasifica_tu"/>
+
+        </TableRow>
+
+        <TableRow android:layout_marginTop="20dp">
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/listobound"
+                android:textSize="20dp"
+                android:text="@string/upload"/>
+        </TableRow>
+
+
+
+    </TableLayout>
+
+    <rocks.evesan.creatnapp.ui.RecordButton
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:id="@+id/record"
+        android:scaleType="fitCenter"
+        android:background="@color/transparent"
+        android:src ="@drawable/record_button"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="40dp"
+        android:layout_marginTop="120dp"
+        android:tint="@color/colorAccent"
+        android:tintMode="multiply"
+        android:layout_centerHorizontal="false"
+        android:layout_centerVertical="false"/>
+
+</RelativeLayout>

@@ -9,6 +9,7 @@ import java.util.List;
 
 import rocks.evesan.creatnapp.R;
 import rocks.evesan.creatnapp.domain.History;
+import rocks.evesan.creatnapp.ui.SnackBarError;
 
 public class NearbyHistory extends AppCompatActivity {
 
@@ -19,9 +20,10 @@ public class NearbyHistory extends AppCompatActivity {
 
         getSupportActionBar().hide();
 
+        SnackBarError.init(findViewById(R.id.wrapper));
 
         Intent i = getIntent();
         List<History> list =(List<History>) i.getSerializableExtra("list");
-
+        SnackBarError.getSnackBar( Integer.toString( list.size() ) ).show();
     }
 }

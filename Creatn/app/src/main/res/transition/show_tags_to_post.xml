@@ -7,5 +7,11 @@
         </targets>
     </fade>
 
+    <fade android:fadingMode ="fade_in">
+        <targets>
+            <target android:targetId="@+id/tags_name_table"/>
+        </targets>
+    </fade>
+
     <changeBounds/>
 </transitionSet>

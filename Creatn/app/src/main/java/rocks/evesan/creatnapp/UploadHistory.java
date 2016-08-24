@@ -33,7 +33,6 @@ public class UploadHistory extends AppCompatActivity {
     private ImageButton rerecord;
     private ImageButton play;
     private Button up;
-    private Location lastKnownLocation;
     private String lat;
     private String lon;
     private EditText name;
