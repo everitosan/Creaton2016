@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<transitionManager xmlns:android="http://schemas.android.com/apk/res/android">
+    <transition
+        android:fromScene="@layout/ready_button"
+        android:toScene="@layout/listen_recorded"
+        android:transition="@transition/bounds"/>
+
+    <transition
+        android:fromScene="@layout/listen_recorded"
+        android:toScene="@layout/ready_button"
+        android:transition="@transition/fade_out_listen"/>
+
+</transitionManager>
