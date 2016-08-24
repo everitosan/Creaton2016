@@ -3,14 +3,20 @@
 
     <string name="permission_denied"> Sorry, location need to be enabled  </string>
     <string name="network_error"> Sorry, mysterious problem :(  </string>
+
+    <!-- Titles -->
     <string name="nearby_title"> ¡Hey!  </string>
     <string name="nearby_title_des"> Hay historias por descubrir. </string>
-
+    <string name="clasifica_tu"> Clasifica tu historia </string>
     <!-- Categories -->
     <string name="Amor"> Amor </string>
     <string name="Crime"> Crimen </string>
     <string name="Mitos"> Mitos Urrbanos </string>
     <string name="Relatos"> Relatos Históricos </string>
 
-    <string name="clasifica_tu"> Clasifica tu historia </string>
+
+    <string name="no_location"> No hay historias en este lugar, sigue buscando &#8230; </string>
+    <string name="play"> ESCUCHAR </string>
+    <string name="delete"> BORRAR </string>
+    <string name="upload"> SUBIR </string>
 </resources>
