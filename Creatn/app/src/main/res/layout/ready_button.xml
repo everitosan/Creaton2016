@@ -5,7 +5,7 @@
     android:layout_gravity="center"
     android:background="@drawable/bg_port"
     >
-    <rocks.evesan.creatnapp.ui.RecordButton
+    <ImageButton
         android:layout_width="160dp"
         android:layout_height="160dp"
         android:id="@+id/record"

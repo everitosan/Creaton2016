@@ -11,65 +11,34 @@ import android.widget.ToggleButton;
 
 import java.io.IOException;
 
+import rocks.evesan.creatnapp.Constants.RecordConstants;
 import rocks.evesan.creatnapp.R;
 
 /**
  * Created by evesan on 8/21/16.
  */
-public class RecordButton extends ImageButton {
+public class RecordButton {
 
+    private ImageButton mImageButton = null;
     private MediaRecorder mRecorder = null;
     private MediaPlayer button_sound = null;
     private boolean sound_enabled = false;
-    private String mFileName;
     private Context context;
     private boolean is_recording = false;
 
-    public RecordButton(Context context, AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-        postConstructor(context);
+
+    public RecordButton(ImageButton imageButton) {
+        this.mImageButton = imageButton;
+        this.context = mImageButton.getContext();
+        this.button_sound = MediaPlayer.create(this.context, R.raw.served);
     }
 
-    public RecordButton(Context context, AttributeSet attrs) {
-        super(context, attrs);
-        postConstructor(context);
+    public void enable_sound() {
+        this.sound_enabled = true;
     }
 
-    public RecordButton(Context context) {
-        super(context);
-        postConstructor(context);
-    }
-
-    public void postConstructor(Context ctx) {
-        this.context = ctx;
-        //Set audio for button
-        button_sound = MediaPlayer.create(this.context, R.raw.served);
-    }
-
-    public void enableSound() {
-        sound_enabled = true;
-    }
-
-
-    public void init() {
-        postConstructor(context);
-        //Set file name and route
-        mFileName = Environment.getExternalStorageDirectory().getAbsolutePath();
-        mFileName += "/caminos_parlantes.3gp";
-
-        //Prepare media recorder
-        mRecorder = new MediaRecorder();
-        mRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
-        mRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
-        mRecorder.setOutputFile(mFileName);
-        mRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
-
-
-    }
-
-    public String getFileName() {
-        init();
-        return mFileName;
+    public ImageButton getImageButton () {
+        return this.mImageButton;
     }
 
     public void prepare() {
@@ -80,6 +49,16 @@ public class RecordButton extends ImageButton {
             Log.e("TAG", "prepare() failed" + e.getMessage());
         }
     }
+
+    private void init() {
+        //Prepare media recorder
+        mRecorder = new MediaRecorder();
+        mRecorder.setAudioSource(RecordConstants.AUDIO_SOURCE) ;
+        mRecorder.setOutputFormat(RecordConstants.OUTPUT_FORMAT);
+        mRecorder.setOutputFile(RecordConstants.AUDIO_NAME);
+        mRecorder.setAudioEncoder(RecordConstants.AUDIO_ENCODER);
+    }
+
 
     public void start() {
         mRecorder.start();
@@ -107,8 +86,14 @@ public class RecordButton extends ImageButton {
 
         prepare();
         start();
-        setImageDrawable(getResources().getDrawable(R.drawable.record_button_pressed));
+        this.mImageButton.setImageDrawable(this.context.getResources().getDrawable(R.drawable.record_button_pressed));
         is_recording = true;
+    }
+
+    public void stopRecord () {
+        mRecorder.stop();
+        mRecorder.release();
+        this.mImageButton.setImageDrawable(this.context.getResources().getDrawable(R.drawable.record_button));
     }
 
 }

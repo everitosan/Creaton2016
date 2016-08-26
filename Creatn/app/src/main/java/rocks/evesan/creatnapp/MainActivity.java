@@ -1,5 +1,6 @@
 package rocks.evesan.creatnapp;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -8,7 +9,6 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.media.MediaPlayer;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.transition.Scene;
@@ -18,6 +18,8 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.ImageButton;
 
 
 import java.io.IOException;
@@ -27,17 +29,22 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import rocks.evesan.creatnapp.Constants.LocationConstants;
+import rocks.evesan.creatnapp.Constants.RecordConstants;
+import rocks.evesan.creatnapp.domain.AudioMultipart;
 import rocks.evesan.creatnapp.domain.History;
 import rocks.evesan.creatnapp.domain.searchData;
 import rocks.evesan.creatnapp.io.apiAdapter;
 import rocks.evesan.creatnapp.ui.RecordButton;
+import rocks.evesan.creatnapp.ui.RecordButtonAdapter;
 import rocks.evesan.creatnapp.ui.SnackBarError;
 
 public class MainActivity extends AppCompatActivity {
 
-    private LocationManager locationManager;
     private MediaPlayer notification;
     private RecordButton mRecordButton;
+
+    private LocationManager locationManager;
     private Location currentLocation;
     private String lProvider;
 
@@ -45,13 +52,12 @@ public class MainActivity extends AppCompatActivity {
     private Scene ready_buttonScene, listen_recordedScene, setTagNameScene;
     private TransitionManager mTransitionManager;
 
-    private String NOHISTORIES;
+    private String NO_HISTORIES, NO_NAME, NO_TAG, UPLOADING, PLEASE_WAIT, INTERNET_ERROR, UPLOADED;
+    private String Tag = null;
 
-    private static final int UPDATE_LOCATION_TIME = 1000*3*60;
-    private static final int UPDATE_LOCATION_DISCTANCE = 200;
+    private ProgressDialog progress;
+    private Context ctx;
 
-
-    private SwipeRefreshLayout swipeContainer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
 
         getSupportActionBar().hide();
         SnackBarError.init( findViewById(R.id.wrapper) );
+        ctx = this;
 
         setListeners();
         setAnimations();
@@ -73,21 +80,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setListeners() {
-        mRecordButton = (RecordButton) findViewById(R.id.record);
-        mRecordButton.setOnTouchListener(recordListener);
+        mRecordButton = RecordButtonAdapter.setmRecordButton( (ImageButton) findViewById(R.id.record) );
+        mRecordButton.getImageButton().setOnTouchListener(recordListener);
 
-        swipeContainer = (SwipeRefreshLayout) findViewById(R.id.swipper);
-        //swipe action
-        swipeContainer.setOnRefreshListener( new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                searchHistories(currentLocation);
-            }
-        });
     }
 
     private void getStrings() {
-        NOHISTORIES = getResources().getString(R.string.no_location);
+        NO_HISTORIES = getResources().getString(R.string.no_location);
+        NO_NAME = getResources().getString(R.string.no_name);
+        NO_TAG = getResources().getString(R.string.no_tag);
+        UPLOADING = getResources().getString(R.string.uploading);
+        PLEASE_WAIT = getResources().getString(R.string.please_wait);
+        INTERNET_ERROR = getResources().getString(R.string.internet_error);
+        UPLOADED = getResources().getString(R.string.uploaded);
     }
 
     private void setAnimations() {
@@ -103,15 +108,13 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public boolean onTouch(View v, MotionEvent event) {
-            mRecordButton.enableSound();
+            mRecordButton.enable_sound();
             switch (event.getAction()){
                 case MotionEvent.ACTION_DOWN:
                     mRecordButton.startRecord();
                     break;
                 case MotionEvent.ACTION_UP:
-                    mRecordButton.stop();
-                    mRecordButton.release();
-                    mRecordButton.setImageDrawable(getResources().getDrawable(R.drawable.record_button));
+                    mRecordButton.stopRecord();
                     mTransitionManager.transitionTo(listen_recordedScene);
                     break;
             }
@@ -132,7 +135,6 @@ public class MainActivity extends AppCompatActivity {
         public void onProviderDisabled(String provider) {}
     };
 
-
     public void getLastLocation() {
         boolean permission = (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED);
         if (permission) {
@@ -141,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
             currentLocation = lastKnownLocation;
             searchHistories(lastKnownLocation);
             //enable repetitive scan of location
-            locationManager.requestLocationUpdates(lProvider, UPDATE_LOCATION_TIME, UPDATE_LOCATION_DISCTANCE, locationListener);
+            locationManager.requestLocationUpdates(lProvider, LocationConstants.UPDATE_LOCATION_TIME, LocationConstants.UPDATE_LOCATION_DISCTANCE, locationListener);
         } else {
             SnackBarError.getSnackBar( getResources().getString(R.string.permission_denied) ).show();
         }
@@ -157,15 +159,14 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onResponse(Call<List<History>> call, Response<List<History>> response) {
-                swipeContainer.setRefreshing(false);
                 if( response.isSuccessful() ) {
                     if (response.body().size() > 0) {
                         notification.start();
-                        Intent i = new Intent(MainActivity.this, NearbyHistory.class);
-                        i.putExtra("list", (Serializable) response.body() );
-                        startActivity(i);
+                        //Intent i = new Intent(MainActivity.this, NearbyHistory.class);
+                        //i.putExtra("list", (Serializable) response.body() );
+                        //startActivity(i);
                     } else {
-                        SnackBarError.getSnackBar(NOHISTORIES).show();
+                        SnackBarError.getSnackBar(NO_HISTORIES).show();
                     }
                 } else {
                     SnackBarError.getSnackBar("Some random error :C").show();
@@ -175,23 +176,36 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<History>> call, Throwable t) {
-                swipeContainer.setRefreshing(false);
                 SnackBarError.getSnackBar( getResources().getString(R.string.network_error) ).show();
             }
         } );
     }
 
-
     public void playRecord(View v) {
         MediaPlayer mp = new MediaPlayer();
+        final ImageButton playButton = (ImageButton) v;
         try {
-            mp.setDataSource(mRecordButton.getFileName());
+            mp.setDataSource(RecordConstants.AUDIO_NAME);
             mp.prepare();
             mp.start();
             SnackBarError.getSnackBar( Integer.toString( mp.getDuration() ) ).show();
+
+            playButton.setImageDrawable( getResources().getDrawable(R.drawable.play_button_disabled) );
+            playButton.setEnabled(false);
+
+            mp.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mp) {
+                    playButton.setEnabled(true);
+                    playButton.setImageDrawable( getResources().getDrawable(R.drawable.play_button) );
+
+                }
+            });
+
         } catch (IOException e) {
             Log.e("TAG", "prepare() failed");
         }
+
     }
 
     public void deleteRecord(View v) {
@@ -199,10 +213,76 @@ public class MainActivity extends AppCompatActivity {
         setListeners();
     }
 
-    public void updateRecord(View v) {
+    public void tagRecord(View v) {
         mTransitionManager.transitionTo(setTagNameScene);
-
     }
+
+    public void setTag(View v) {
+        switch (v.getId()){
+            case R.id.love:
+                Tag = "2";
+                break;
+            case R.id.crime:
+                Tag = "3";
+                break;
+            case R.id.myth:
+                Tag = "1";
+                break;
+            case R.id.history:
+                Tag = "4";
+                break;
+        }
+    }
+
+    public void uploadRecord (View v){
+        String name = ( (EditText) findViewById(R.id.audio_name)).getText().toString();
+        if ( !name.isEmpty() ) {
+            if (Tag != null ) {
+                progress = ProgressDialog.show( ctx, UPLOADING, PLEASE_WAIT);
+
+                AudioMultipart form = new AudioMultipart( new String[] {
+                        RecordConstants.AUDIO_NAME,
+                        name,
+                        Double.toString(currentLocation.getLatitude()),
+                        Double.toString(currentLocation.getLongitude()),
+                        Tag
+                        } );
+
+                Call <History> call = apiAdapter.getApiService().postHistory(
+                        form.getAudio(),
+                        form.getName(),
+                        form.getAudio_lat(),
+                        form.getAudio_lon(),
+                        form.getAudio_tag()
+                );
+
+                call.enqueue(new Callback<History>() {
+                    @Override
+                    public void onResponse(Call<History> call, Response<History> response) {
+                        progress.dismiss();
+                        if (response.isSuccessful()) {
+                            SnackBarError.getSnackBar(UPLOADED).show();
+                            mTransitionManager.transitionTo(ready_buttonScene);
+                        } else {
+                            SnackBarError.getSnackBar("error").show();
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<History> call, Throwable t) {
+                        progress.dismiss();
+                        SnackBarError.getSnackBar(INTERNET_ERROR).show();
+                    }
+                });
+
+            } else {
+                SnackBarError.getSnackBar(NO_TAG).show();
+            }
+        } else {
+            SnackBarError.getSnackBar(NO_NAME).show();
+        }
+    }
+
     @Override
     public void onBackPressed() {
         mTransitionManager.transitionTo(ready_buttonScene);

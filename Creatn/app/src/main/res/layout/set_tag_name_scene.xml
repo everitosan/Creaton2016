@@ -9,7 +9,7 @@
 
     <TableLayout
         android:id="@+id/tags_name_table"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="90dp"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:layout_marginEnd="40dp"
@@ -37,6 +37,7 @@
             android:layout_width="match_parent"
             android:layout_gravity="center">
             <EditText
+                android:id="@+id/audio_name"
                 android:backgroundTint="@color/colorAccent"
                 android:textColor="@color/green"
                 android:layout_width="100dp"
@@ -53,8 +54,19 @@
 
         </TableRow>
 
+        <TableRow
+            android:layout_marginTop="10sp"
+            android:layout_marginBottom="5sp"
+            android:background="@color/colorAccent"
+            >
+            <include layout="@layout/tag_selector"/>
+        </TableRow>
+
+
+
         <TableRow android:layout_marginTop="20dp">
             <Button
+                android:onClick="uploadRecord"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/listobound"
@@ -66,7 +78,7 @@
 
     </TableLayout>
 
-    <rocks.evesan.creatnapp.ui.RecordButton
+    <ImageButton
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:id="@+id/record"
@@ -75,7 +87,7 @@
         android:src ="@drawable/record_button"
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="40dp"
-        android:layout_marginTop="120dp"
+        android:layout_marginTop="60dp"
         android:tint="@color/colorAccent"
         android:tintMode="multiply"
         android:layout_centerHorizontal="false"

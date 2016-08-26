@@ -22,6 +22,18 @@
         android:stretchColumns="*"
         android:layout_centerHorizontal="true"
         >
+        <TableRow>
+            <TextView
+                android:id="@+id/audio_lenght_txt"
+                android:textColor="@color/colorPrimary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/audio_leght"
+                android:textSize="60sp"
+                android:layout_span="3"
+                android:textAlignment="center"
+                />
+        </TableRow>
         <TableRow >
             <ImageButton
                 android:id="@+id/play_sound"
@@ -47,7 +59,7 @@
                 android:id="@+id/upload_button"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:onClick="updateRecord"
+                android:onClick="tagRecord"
                 android:background="@color/transparent"
                 android:src="@drawable/upload_button"
                 android:scaleType="fitCenter"
@@ -78,7 +90,7 @@
 
     </TableLayout>
 
-    <rocks.evesan.creatnapp.ui.RecordButton
+    <ImageButton
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:id="@+id/record"

@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <transitionSet xmlns:android="http://schemas.android.com/apk/res/android"
     >
+
+    <changeBounds/>
+
+
     <fade android:fadingMode ="fade_out">
         <targets>
             <target android:targetId="@+id/buttons_table"/>
@@ -13,5 +17,4 @@
         </targets>
     </fade>
 
-    <changeBounds/>
 </transitionSet>

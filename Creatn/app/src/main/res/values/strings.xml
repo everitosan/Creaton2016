@@ -7,17 +7,29 @@
     <!-- Titles -->
     <string name="nearby_title"> ¡Hey!  </string>
     <string name="nearby_title_des"> Hay historias por descubrir. </string>
-    <string name="clasifica_tu"> Clasifica tu historia </string>
-    <string name="setNameTxt"> Escoge un nombre para tu audio </string>
+    <string name="clasifica_tu"> Clasifica tu historia. </string>
+    <string name="setNameTxt"> Escoge un nombre para tu audio. </string>
     <!-- Categories -->
-    <string name="Amor"> Amor </string>
-    <string name="Crime"> Crimen </string>
-    <string name="Mitos"> Mitos Urrbanos </string>
-    <string name="Relatos"> Relatos Históricos </string>
+    <string name="love"> Amor </string>
+    <string name="crime"> Crimen </string>
+    <string name="myth"> Mitos Urrbanos </string>
+    <string name="history"> Relatos Históricos </string>
 
 
     <string name="no_location"> No hay historias en este lugar, sigue buscando &#8230; </string>
     <string name="play"> PLAY </string>
     <string name="delete"> BORRAR </string>
     <string name="upload"> SUBIR </string>
+    <string name="audio_leght"> 00:00:00</string>
+
+    <!-- Errors -->
+    <string name="no_name"> Proporciona un nombre al audio </string>
+    <string name="no_tag"> Proporciona una categoría </string>
+    <string name="internet_error"> Hay problemas en la red </string>
+
+    <!-- Sucess -->
+    <string name ="uploaded"> La calle agradece tu historia </string>
+    <!-- Dialog -->
+    <string name="uploading"> Subiendo </string>
+    <string name="please_wait"> Por favor espere </string>
 </resources>
