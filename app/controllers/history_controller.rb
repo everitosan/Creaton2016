@@ -13,6 +13,8 @@ class HistoryController < ApplicationController
       m_params = params
       m_params.delete("audio") #delete uncessary hash
 
+      tag = Tag.find(params["history"]["tag"])
+
       file_name = Time.now.strftime("%Y_%d_%m_%H_%M_%S-%Z") + file.original_filename
       file_path = Rails.root.join('public', 'uploads', file_name)
 
@@ -20,6 +22,7 @@ class HistoryController < ApplicationController
 
       if upload(file, file_path)
         history = History.new(history_params(m_params))
+        history.tags.push(tag);
         if history.save
           jsonRespose(history.to_json( :include => [:tags] ), 200)
         else
