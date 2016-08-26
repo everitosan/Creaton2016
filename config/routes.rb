@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   root 'history#index'
+  get 'tags' => 'tag#index'
   post 'history' => 'history#create'
   post 'history/like' => 'history#add_like'
 

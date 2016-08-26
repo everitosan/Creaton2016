@@ -3231,3 +3231,336 @@ Can't verify CSRF token authenticity
 Distance to sounds 0.45383052958512243
 Distance to sounds 0.45383052958512243
 Completed 200 OK in 7ms (Views: 0.1ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/history" for ::1 at 2016-08-26 12:37:01 -0500
+
+PG::ConnectionBad (could not connect to server: No such file or directory
+	Is the server running locally and accepting
+	connections on Unix domain socket "/tmp/.s.PGSQL.5432"?
+):
+  activerecord (4.2.5) lib/active_record/connection_adapters/postgresql_adapter.rb:651:in `initialize'
+  activerecord (4.2.5) lib/active_record/connection_adapters/postgresql_adapter.rb:651:in `new'
+  activerecord (4.2.5) lib/active_record/connection_adapters/postgresql_adapter.rb:651:in `connect'
+  activerecord (4.2.5) lib/active_record/connection_adapters/postgresql_adapter.rb:242:in `initialize'
+  activerecord (4.2.5) lib/active_record/connection_adapters/postgresql_adapter.rb:44:in `new'
+  activerecord (4.2.5) lib/active_record/connection_adapters/postgresql_adapter.rb:44:in `postgresql_connection'
+  activerecord (4.2.5) lib/active_record/connection_adapters/abstract/connection_pool.rb:438:in `new_connection'
+  activerecord (4.2.5) lib/active_record/connection_adapters/abstract/connection_pool.rb:448:in `checkout_new_connection'
+  activerecord (4.2.5) lib/active_record/connection_adapters/abstract/connection_pool.rb:422:in `acquire_connection'
+  activerecord (4.2.5) lib/active_record/connection_adapters/abstract/connection_pool.rb:349:in `block in checkout'
+  /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/monitor.rb:211:in `mon_synchronize'
+  activerecord (4.2.5) lib/active_record/connection_adapters/abstract/connection_pool.rb:348:in `checkout'
+  activerecord (4.2.5) lib/active_record/connection_adapters/abstract/connection_pool.rb:263:in `block in connection'
+  /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/monitor.rb:211:in `mon_synchronize'
+  activerecord (4.2.5) lib/active_record/connection_adapters/abstract/connection_pool.rb:262:in `connection'
+  activerecord (4.2.5) lib/active_record/connection_adapters/abstract/connection_pool.rb:571:in `retrieve_connection'
+  activerecord (4.2.5) lib/active_record/connection_handling.rb:113:in `retrieve_connection'
+  activerecord (4.2.5) lib/active_record/connection_handling.rb:87:in `connection'
+  activerecord (4.2.5) lib/active_record/migration.rb:383:in `connection'
+  activerecord (4.2.5) lib/active_record/migration.rb:370:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.5) lib/active_support/callbacks.rb:88:in `__run_callbacks__'
+  activesupport (4.2.5) lib/active_support/callbacks.rb:778:in `_run_call_callbacks'
+  activesupport (4.2.5) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.5) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Library/Ruby/Gems/2.0.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.2ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.5ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.8ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (34.0ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (1.0ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (1.2ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.7ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (40.5ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.5ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (81.7ms)
+
+
+Started POST "/history" for ::1 at 2016-08-26 12:38:39 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (2.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by HistoryController#create as */*
+  Parameters: {"history"=>{"name"=>"captan oh my dear captan", "latitude"=>"19.4379897", "longitude"=>"-99.137699", "audio"=>#<ActionDispatch::Http::UploadedFile:0x007fa6025000f0 @tempfile=#<Tempfile:/var/folders/0y/1rbd6jd537n98jt280ndy4080000gn/T/RackMultipart20160826-5518-1eieycs.mp3>, @original_filename="War Of Colossus.mp3", @content_type="audio/mp3", @headers="Content-Disposition: form-data; name=\"history[audio]\"; filename=\"War Of Colossus.mp3\"\r\nContent-Type: audio/mp3\r\n">}}
+Unpermitted parameter: audio
+  [1m[35m (0.7ms)[0m  BEGIN
+  [1m[36mHistory Exists (4.0ms)[0m  [1mSELECT  1 AS one FROM "histories" WHERE "histories"."url" = '/Users/evesan/MEGA/Everito.san/creantApi/public/uploads/2016_26_08_12_38_39-CDTWar Of Colossus.mp3' LIMIT 1[0m
+  [1m[35mSQL (5.6ms)[0m  INSERT INTO "histories" ("name", "latitude", "longitude", "url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["name", "captan oh my dear captan"], ["latitude", "19.4379897"], ["longitude", "-99.137699"], ["url", "/Users/evesan/MEGA/Everito.san/creantApi/public/uploads/2016_26_08_12_38_39-CDTWar Of Colossus.mp3"], ["created_at", "2016-08-26 17:38:40.044476"], ["updated_at", "2016-08-26 17:38:40.044476"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35mTag Load (1.6ms)[0m  SELECT "tags".* FROM "tags" INNER JOIN "histories_tags" ON "tags"."id" = "histories_tags"."tag_id" WHERE "histories_tags"."history_id" = $1  [["history_id", 3]]
+Completed 200 OK in 205ms (Views: 0.3ms | ActiveRecord: 31.1ms)
+
+
+Started POST "/tags" for ::1 at 2016-08-26 12:48:39 -0500
+
+ArgumentError (Missing :controller key on routes definition, please check your routes.):
+  config/routes.rb:6:in `block in <top (required)>'
+  config/routes.rb:1:in `<top (required)>'
+
+
+  Rendered /Library/Ruby/Gems/2.0.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.4ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.7ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (30.1ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (27.6ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.5ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (57.5ms)
+
+
+Started POST "/tags" for ::1 at 2016-08-26 12:49:13 -0500
+
+ActionController::RoutingError (No route matches [POST] "/tags"):
+  actionpack (4.2.5) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Library/Ruby/Gems/2.0.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.3ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.9ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_table.html.erb (20.8ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (46.3ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (16.6ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (33.5ms)
+
+
+Started POST "/tag" for ::1 at 2016-08-26 12:49:22 -0500
+
+ActionController::RoutingError (No route matches [POST] "/tag"):
+  actionpack (4.2.5) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Library/Ruby/Gems/2.0.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.7ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_route.html.erb (0.8ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.2ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (22.9ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (16.2ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (33.7ms)
+
+
+Started POST "/tags" for ::1 at 2016-08-26 12:49:36 -0500
+
+ActionController::RoutingError (No route matches [POST] "/tags"):
+  actionpack (4.2.5) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Library/Ruby/Gems/2.0.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.2ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.0ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.3ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.9ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (24.7ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (16.1ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (33.1ms)
+
+
+Started GET "/tags" for ::1 at 2016-08-26 12:49:45 -0500
+Processing by TagController#index as */*
+  [1m[36mTag Load (0.5ms)[0m  [1mSELECT "tags".* FROM "tags"[0m
+Completed 200 OK in 9ms (Views: 1.1ms | ActiveRecord: 1.6ms)
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.5ms)[0m  INSERT INTO "tags" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["name", "love"], ["created_at", "2016-08-26 17:56:10.514781"], ["updated_at", "2016-08-26 17:56:10.514781"]]
+  [1m[36m (1.0ms)[0m  [1mCOMMIT[0m
+
+
+Started GET "/tags" for ::1 at 2016-08-26 12:57:36 -0500
+Processing by TagController#index as */*
+  [1m[35mTag Load (1.7ms)[0m  SELECT "tags".* FROM "tags"
+Completed 200 OK in 16ms (Views: 8.1ms | ActiveRecord: 7.2ms)
+
+
+Started GET "/history" for ::1 at 2016-08-26 12:57:53 -0500
+
+ActionController::RoutingError (No route matches [GET] "/history"):
+  actionpack (4.2.5) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Library/Ruby/Gems/2.0.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.7ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_route.html.erb (1.0ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_table.html.erb (1.3ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (25.5ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.6ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (23.3ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.5ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (46.5ms)
+
+
+Started POST "/history" for ::1 at 2016-08-26 12:58:09 -0500
+Processing by HistoryController#create as */*
+  Parameters: {"history"=>{"name"=>"captan oh my dear captan", "latitude"=>"19.4379897", "longitude"=>"-99.137699", "audio"=>#<ActionDispatch::Http::UploadedFile:0x007fa602cea810 @tempfile=#<Tempfile:/var/folders/0y/1rbd6jd537n98jt280ndy4080000gn/T/RackMultipart20160826-5518-1s201in.mp3>, @original_filename="War Of Colossus.mp3", @content_type="audio/mp3", @headers="Content-Disposition: form-data; name=\"history[audio]\"; filename=\"War Of Colossus.mp3\"\r\nContent-Type: audio/mp3\r\n">}}
+Unpermitted parameter: audio
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mHistory Exists (0.5ms)[0m  SELECT  1 AS one FROM "histories" WHERE "histories"."url" = '/Users/evesan/MEGA/Everito.san/creantApi/public/uploads/2016_26_08_12_58_09-CDTWar Of Colossus.mp3' LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "histories" ("name", "latitude", "longitude", "url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "captan oh my dear captan"], ["latitude", "19.4379897"], ["longitude", "-99.137699"], ["url", "/Users/evesan/MEGA/Everito.san/creantApi/public/uploads/2016_26_08_12_58_09-CDTWar Of Colossus.mp3"], ["created_at", "2016-08-26 17:58:10.032383"], ["updated_at", "2016-08-26 17:58:10.032383"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36mTag Load (0.5ms)[0m  [1mSELECT "tags".* FROM "tags" INNER JOIN "histories_tags" ON "tags"."id" = "histories_tags"."tag_id" WHERE "histories_tags"."history_id" = $1[0m  [["history_id", 4]]
+Completed 200 OK in 85ms (Views: 0.1ms | ActiveRecord: 5.1ms)
+
+
+Started GET "/tags" for ::1 at 2016-08-26 12:58:27 -0500
+Processing by TagController#index as */*
+  [1m[35mTag Load (0.5ms)[0m  SELECT "tags".* FROM "tags"
+Completed 200 OK in 4ms (Views: 1.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/" for ::1 at 2016-08-26 12:58:55 -0500
+Processing by HistoryController#index as */*
+  [1m[36mHistory Load (0.8ms)[0m  [1mSELECT "histories".* FROM "histories"[0m
+  [1m[35mHABTM_Tags Load (1.2ms)[0m  SELECT "histories_tags".* FROM "histories_tags" WHERE "histories_tags"."history_id" IN (2, 1, 3, 4)
+Completed 200 OK in 21ms (Views: 0.2ms | ActiveRecord: 2.0ms)
