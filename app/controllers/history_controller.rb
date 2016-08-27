@@ -65,10 +65,14 @@ class HistoryController < ApplicationController
     end
 
     def upload (history_audio, file_path)
-      history_audio_filename =  history_audio.original_filename
-      File.open(file_path, 'wb') do |file|
-        file.write(history_audio.read)
-      end
+      obj = S3_BUCKET.object(history_audio)
+      obj.upload_file(file_path, acl:'public-read')
+      logger.info "#"*30
+      logger.info obj.public_url
+      #File.open(file_path, 'wb') do |file|
+      #  file.write(history_audio.read)
+      #end
+
     end
 
 end
