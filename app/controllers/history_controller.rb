@@ -20,7 +20,7 @@ class HistoryController < ApplicationController
 
       m_params["history"]["url"] = 'uploads/' + file_name #asign url to hash object
 
-      if upload(file, file_path)
+      if upload(file, m_params["history"]["url"] )
         history = History.new(history_params(m_params))
         history.tags.push(tag);
         if history.save
