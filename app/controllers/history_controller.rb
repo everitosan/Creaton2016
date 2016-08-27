@@ -15,12 +15,12 @@ class HistoryController < ApplicationController
 
       tag = Tag.find(params["history"]["tag"])
 
-      file_name = Time.now.strftime("%Y_%d_%m_%H_%M_%S-%Z") + file.original_filename
+      file_name = Time.now.strftime("%Y_%d_%m_%H_%M_%S-%Z") + params["history"]["name"]
       file_path = Rails.root.join('public', 'uploads', file_name)
 
-      m_params["history"]["url"] = 'uploads/' + file_name #asign url to hash object
+      m_params["history"]["url"] = "https://s3-us-west-2.amazonaws.com/creatn/" + file_name +".mp3"
 
-      if upload(file, file_path, file_name)
+      if upload(file, file_path, file_name )
         history = History.new(history_params(m_params))
         history.tags.push(tag);
         if history.save
@@ -70,7 +70,7 @@ class HistoryController < ApplicationController
         file.write(history_audio.read)
       end
 
-      obj = S3_BUCKET.object(file_name)
+      obj = S3_BUCKET.object(file_name + ".mp3")
       obj.upload_file(file_path.to_s, acl:'public-read')
       logger.info "#"*4
       logger.info obj.public_url
