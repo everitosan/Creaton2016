@@ -1,6 +1,8 @@
 package rocks.evesan.creatnapp.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by evesan on 8/21/16.
@@ -12,6 +14,15 @@ public class History implements Serializable{
     private String longitude;
     private String url;
     private String likes;
+    private ArrayList<Tag> tags;
+
+    public ArrayList<Tag> getTags() {
+        return tags;
+    }
+
+    public void setTags( ArrayList<Tag> tags) {
+        this.tags = tags;
+    }
 
     public String getName() {
         return name;

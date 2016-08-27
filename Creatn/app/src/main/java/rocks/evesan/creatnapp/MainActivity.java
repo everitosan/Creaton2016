@@ -20,6 +20,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 
 
 import java.io.IOException;
@@ -29,6 +30,7 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import rocks.evesan.creatnapp.Adapter.HistoryAdapter;
 import rocks.evesan.creatnapp.Constants.LocationConstants;
 import rocks.evesan.creatnapp.Constants.RecordConstants;
 import rocks.evesan.creatnapp.domain.AudioMultipart;
@@ -57,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
 
     private ProgressDialog progress;
     private Context ctx;
-
+    private RelativeLayout wrapper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         getSupportActionBar().hide();
+        wrapper = (RelativeLayout) findViewById(R.id.mainWrapper);
         SnackBarError.init( findViewById(R.id.wrapper) );
         ctx = this;
 
@@ -162,6 +165,10 @@ public class MainActivity extends AppCompatActivity {
                 if( response.isSuccessful() ) {
                     if (response.body().size() > 0) {
                         notification.start();
+                        HistoryAdapter hA = new HistoryAdapter(ctx);
+                        hA.addHistories( response.body() );
+                        hA.addToScreen(wrapper);
+
                         //Intent i = new Intent(MainActivity.this, NearbyHistory.class);
                         //i.putExtra("list", (Serializable) response.body() );
                         //startActivity(i);
@@ -219,14 +226,14 @@ public class MainActivity extends AppCompatActivity {
 
     public void setTag(View v) {
         switch (v.getId()){
+            case R.id.myth:
+                Tag = "1";
+                break;
             case R.id.love:
                 Tag = "2";
                 break;
             case R.id.crime:
                 Tag = "3";
-                break;
-            case R.id.myth:
-                Tag = "1";
                 break;
             case R.id.history:
                 Tag = "4";
