@@ -70,7 +70,7 @@ class HistoryController < ApplicationController
         file.write(history_audio.read)
       end
 
-      obj = S3_BUCKET.object(history_audio)
+      obj = S3_BUCKET.object('file')
       obj.upload_file(file_path.to_s, acl:'public-read')
       logger.info "#"*4
       logger.info obj.public_url
