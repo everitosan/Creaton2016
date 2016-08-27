@@ -64,7 +64,7 @@ class HistoryController < ApplicationController
         m_params.require(:history).permit(:name, :latitude, :longitude, :url)
     end
 
-    def upload (history_audio, file_path)
+    def upload (history_audio, file_path, file_name)
 
       File.open(file_path, 'wb') do |file|
         file.write(history_audio.read)
