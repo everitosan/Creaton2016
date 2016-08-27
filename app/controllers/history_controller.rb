@@ -71,7 +71,7 @@ class HistoryController < ApplicationController
       end
 
       obj = S3_BUCKET.object(file_name + ".mp3")
-      obj.upload_file(file_path.to_s, acl:'public-read')
+      obj.upload_file(file_path.to_s, acl:'public-read', content_type:'audio/mpeg')
       logger.info "#"*4
       logger.info obj.public_url
 
