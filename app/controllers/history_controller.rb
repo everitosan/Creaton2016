@@ -16,9 +16,9 @@ class HistoryController < ApplicationController
       tag = Tag.find(params["history"]["tag"])
 
       file_name = Time.now.strftime("%Y_%d_%m_%H_%M_%S-%Z") + file.original_filename
-      file_path = 'uploads/' + file_name
+      file_path = Rails.root.join('public', 'uploads', file_name)
 
-      m_params["history"]["url"] = file_path #asign url to hash object
+      m_params["history"]["url"] = 'uploads/' + file_name #asign url to hash object
 
       if upload(file, file_path)
         history = History.new(history_params(m_params))

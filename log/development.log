@@ -3703,3 +3703,43 @@ Unpermitted parameters: audio, tag
   [1m[35mSQL (0.5ms)[0m  INSERT INTO "histories_tags" ("tag_id", "history_id") VALUES ($1, $2) RETURNING "id"  [["tag_id", 1], ["history_id", 5]]
   [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
 Completed 200 OK in 166ms (Views: 0.2ms | ActiveRecord: 9.9ms)
+
+
+Started POST "/history" for ::1 at 2016-08-26 21:01:03 -0500
+Processing by HistoryController#create as */*
+  Parameters: {"history"=>{"name"=>"captan oh my dear captan", "latitude"=>"19.4379897", "longitude"=>"-99.137699", "audio"=>#<ActionDispatch::Http::UploadedFile:0x007fd2d3180918 @tempfile=#<Tempfile:/var/folders/0y/1rbd6jd537n98jt280ndy4080000gn/T/RackMultipart20160826-7093-eigtav.mp3>, @original_filename="War Of Colossus.mp3", @content_type="audio/mp3", @headers="Content-Disposition: form-data; name=\"history[audio]\"; filename=\"War Of Colossus.mp3\"\r\nContent-Type: audio/mp3\r\n">, "tag"=>"1"}}
+  [1m[35mTag Load (1.4ms)[0m  SELECT  "tags".* FROM "tags" WHERE "tags"."id" = $1 LIMIT 1  [["id", 1]]
+Completed 500 Internal Server Error in 36ms (ActiveRecord: 14.0ms)
+
+Errno::ENOENT (No such file or directory - uploads/2016_26_08_21_01_03-CDTWar Of Colossus.mp3):
+  app/controllers/history_controller.rb:69:in `initialize'
+  app/controllers/history_controller.rb:69:in `open'
+  app/controllers/history_controller.rb:69:in `upload'
+  app/controllers/history_controller.rb:23:in `create'
+
+
+  Rendered /Library/Ruby/Gems/2.0.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (8.9ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.7ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (37.3ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (1.1ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.8ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (32.9ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (1.3ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (83.2ms)
+
+
+Started POST "/history" for ::1 at 2016-08-26 21:02:25 -0500
+Processing by HistoryController#create as */*
+  Parameters: {"history"=>{"name"=>"captan oh my dear captan", "latitude"=>"19.4379897", "longitude"=>"-99.137699", "audio"=>#<ActionDispatch::Http::UploadedFile:0x007fd2d126c978 @tempfile=#<Tempfile:/var/folders/0y/1rbd6jd537n98jt280ndy4080000gn/T/RackMultipart20160826-7093-1mpvwvz.mp3>, @original_filename="War Of Colossus.mp3", @content_type="audio/mp3", @headers="Content-Disposition: form-data; name=\"history[audio]\"; filename=\"War Of Colossus.mp3\"\r\nContent-Type: audio/mp3\r\n">, "tag"=>"1"}}
+  [1m[36mTag Load (0.5ms)[0m  [1mSELECT  "tags".* FROM "tags" WHERE "tags"."id" = $1 LIMIT 1[0m  [["id", 1]]
+Unpermitted parameters: audio, tag
+  [1m[35m (0.4ms)[0m  BEGIN
+  [1m[36mHistory Exists (2.9ms)[0m  [1mSELECT  1 AS one FROM "histories" WHERE "histories"."url" = 'uploads/2016_26_08_21_02_25-CDTWar Of Colossus.mp3' LIMIT 1[0m
+  [1m[35mSQL (1.9ms)[0m  INSERT INTO "histories" ("name", "latitude", "longitude", "url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["name", "captan oh my dear captan"], ["latitude", "19.4379897"], ["longitude", "-99.137699"], ["url", "uploads/2016_26_08_21_02_25-CDTWar Of Colossus.mp3"], ["created_at", "2016-08-27 02:02:25.495561"], ["updated_at", "2016-08-27 02:02:25.495561"]]
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "histories_tags" ("tag_id", "history_id") VALUES ($1, $2) RETURNING "id"[0m  [["tag_id", 1], ["history_id", 6]]
+  [1m[35m (0.6ms)[0m  COMMIT
+Completed 200 OK in 125ms (Views: 0.2ms | ActiveRecord: 21.5ms)
