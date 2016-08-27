@@ -20,7 +20,7 @@ class HistoryController < ApplicationController
 
       m_params["history"]["url"] = 'uploads/' + file_name #asign url to hash object
 
-      if upload(file, m_params["history"]["url"] )
+      if upload(file, file_path)
         history = History.new(history_params(m_params))
         history.tags.push(tag);
         if history.save
@@ -65,13 +65,16 @@ class HistoryController < ApplicationController
     end
 
     def upload (history_audio, file_path)
+
+      File.open(file_path, 'wb') do |file|
+        file.write(history_audio.read)
+      end
+
       obj = S3_BUCKET.object(history_audio)
       obj.upload_file(file_path, acl:'public-read')
-      logger.info "#"*30
+      logger.info "#"*4
       logger.info obj.public_url
-      #File.open(file_path, 'wb') do |file|
-      #  file.write(history_audio.read)
-      #end
+
 
     end
 
