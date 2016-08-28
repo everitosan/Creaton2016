@@ -8,6 +8,7 @@ class TagController < ApplicationController
       t = Tag.create("name"=>"Crimen")
       t = Tag.create("name"=>"Mitos Urbanos")
       tags = Tag.all()
+    end
     jsonRespose(tags, 200)
   end
 end
