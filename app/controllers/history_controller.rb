@@ -18,9 +18,7 @@ class HistoryController < ApplicationController
       file_name = Time.now.strftime("%Y_%d_%m_%H_%M_%S-%Z") + params["history"]["name"]
       file_path = Rails.root.join('public', 'uploads', file_name)
 
-      m_params["history"]["url"] = "https://s3-us-west-2.amazonaws.com/creatn/" + file_name +".mp3"
-
-      if upload(file, file_path, file_name )
+      if upload(file, file_path,  m_params)
         history = History.new(history_params(m_params))
         history.tags.push(tag);
         if history.save
@@ -64,15 +62,16 @@ class HistoryController < ApplicationController
         m_params.require(:history).permit(:name, :latitude, :longitude, :url)
     end
 
-    def upload (history_audio, file_path, file_name)
+    def upload (history_audio, file_path, m_params)
 
       File.open(file_path, 'wb') do |file|
         file.write(history_audio.read)
       end
 
-      obj = S3_BUCKET.object(file_name + ".mp3")
+      obj = S3_BUCKET.object(m_params["history"]["name"] + ".3gp")
       obj.upload_file(file_path.to_s, acl:'public-read', content_type:'audio/mpeg')
       logger.info "#"*4
+      m_params["history"]["url"] = obj.public_url
       logger.info obj.public_url
 
 
