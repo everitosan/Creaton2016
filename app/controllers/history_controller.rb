@@ -70,7 +70,7 @@ class HistoryController < ApplicationController
       end
       # copy file to s3
 
-      obj = S3_BUCKET.object(file_name + ".3gp")
+      obj = S3_BUCKET.object(file_name + ".mp3")
       obj.upload_file(file_path.to_s, acl:'public-read', content_type:'audio/mpeg')
 
       logger.info "#"*4
