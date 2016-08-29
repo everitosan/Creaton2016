@@ -31,6 +31,7 @@ public class RecordButton {
         this.mImageButton = imageButton;
         this.context = mImageButton.getContext();
         this.button_sound = MediaPlayer.create(this.context, R.raw.served);
+        init();
     }
 
     public void enable_sound() {
@@ -42,9 +43,9 @@ public class RecordButton {
     }
 
     public void prepare() {
-        init();
         try {
             mRecorder.prepare();
+            mRecorder.start();
         } catch (IOException e) {
             Log.e("TAG", "prepare() failed" + e.getMessage());
         }
@@ -57,21 +58,15 @@ public class RecordButton {
         mRecorder.setOutputFormat(RecordConstants.OUTPUT_FORMAT);
         mRecorder.setOutputFile(RecordConstants.AUDIO_NAME);
         mRecorder.setAudioEncoder(RecordConstants.AUDIO_ENCODER);
+        //mRecorder.setAudioSamplingRate(RecordConstants.SAMPLING);
+        mRecorder.setAudioEncodingBitRate(RecordConstants.SAMPLING);
+        mRecorder.setAudioChannels(1);
     }
 
-
-    public void start() {
-        mRecorder.start();
-    }
 
     public void stop() {
         is_recording = false;
         mRecorder.stop();
-    }
-
-    public void release() {
-        mRecorder.release();
-        mRecorder = null;
     }
 
     public void startRecord() {
@@ -85,13 +80,13 @@ public class RecordButton {
         }
 
         prepare();
-        start();
         this.mImageButton.setImageDrawable(this.context.getResources().getDrawable(R.drawable.record_button_pressed));
         is_recording = true;
     }
 
     public void stopRecord () {
         mRecorder.stop();
+        mRecorder.reset();
         mRecorder.release();
         this.mImageButton.setImageDrawable(this.context.getResources().getDrawable(R.drawable.record_button));
     }

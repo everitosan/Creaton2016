@@ -61,6 +61,8 @@ public class MainActivity extends AppCompatActivity {
     private Context ctx;
     private RelativeLayout wrapper;
 
+    private HistoryAdapter hA;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
         wrapper = (RelativeLayout) findViewById(R.id.mainWrapper);
         SnackBarError.init( findViewById(R.id.wrapper) );
         ctx = this;
+        hA = new HistoryAdapter(ctx);
 
         setListeners();
         setAnimations();
@@ -165,13 +168,10 @@ public class MainActivity extends AppCompatActivity {
                 if( response.isSuccessful() ) {
                     if (response.body().size() > 0) {
                         notification.start();
-                        HistoryAdapter hA = new HistoryAdapter(ctx);
+
                         hA.addHistories( response.body() );
                         hA.addToScreen(wrapper);
 
-                        //Intent i = new Intent(MainActivity.this, NearbyHistory.class);
-                        //i.putExtra("list", (Serializable) response.body() );
-                        //startActivity(i);
                     } else {
                         SnackBarError.getSnackBar(NO_HISTORIES).show();
                     }
