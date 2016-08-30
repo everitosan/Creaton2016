@@ -1,6 +1,7 @@
 package rocks.evesan.creatnapp.ui;
 
 import android.content.Context;
+import android.media.AudioFormat;
 import android.media.MediaPlayer;
 import android.media.MediaRecorder;
 import android.os.Environment;
@@ -60,7 +61,7 @@ public class RecordButton {
         mRecorder.setAudioEncoder(RecordConstants.AUDIO_ENCODER);
         //mRecorder.setAudioSamplingRate(RecordConstants.SAMPLING);
         mRecorder.setAudioEncodingBitRate(RecordConstants.SAMPLING);
-        mRecorder.setAudioChannels(1);
+        mRecorder.setAudioChannels(2);
     }
 
 

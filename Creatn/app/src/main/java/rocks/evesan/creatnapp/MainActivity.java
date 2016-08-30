@@ -33,6 +33,7 @@ import retrofit2.Response;
 import rocks.evesan.creatnapp.Adapter.HistoryAdapter;
 import rocks.evesan.creatnapp.Constants.LocationConstants;
 import rocks.evesan.creatnapp.Constants.RecordConstants;
+import rocks.evesan.creatnapp.Service.LocationSrv;
 import rocks.evesan.creatnapp.domain.AudioMultipart;
 import rocks.evesan.creatnapp.domain.History;
 import rocks.evesan.creatnapp.domain.searchData;
@@ -46,9 +47,8 @@ public class MainActivity extends AppCompatActivity {
     private MediaPlayer notification;
     private RecordButton mRecordButton;
 
-    private LocationManager locationManager;
+    private LocationSrv mLocationSrv;
     private Location currentLocation;
-    private String lProvider;
 
     private ViewGroup rootScene;
     private Scene ready_buttonScene, listen_recordedScene, setTagNameScene;
@@ -79,8 +79,8 @@ public class MainActivity extends AppCompatActivity {
         getStrings();
 
         notification = MediaPlayer.create(this, R.raw.the_calling);
-        locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
-        lProvider = LocationManager.GPS_PROVIDER;
+        mLocationSrv = new LocationSrv((LocationManager) this.getSystemService(Context.LOCATION_SERVICE));
+
         getLastLocation();
 
     }
@@ -144,19 +144,26 @@ public class MainActivity extends AppCompatActivity {
     public void getLastLocation() {
         boolean permission = (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED);
         if (permission) {
-            String locationProvider = lProvider;
-            Location lastKnownLocation = locationManager.getLastKnownLocation(locationProvider);
-            currentLocation = lastKnownLocation;
-            searchHistories(lastKnownLocation);
+
+            //searchHistories(lastKnownLocation);
             //enable repetitive scan of location
-            locationManager.requestLocationUpdates(lProvider, LocationConstants.UPDATE_LOCATION_TIME, LocationConstants.UPDATE_LOCATION_DISCTANCE, locationListener);
+            mLocationSrv.getLocationManager().
+                    requestLocationUpdates(
+                            mLocationSrv.getProviderName(),
+                            LocationConstants.UPDATE_LOCATION_TIME,
+                            LocationConstants.UPDATE_LOCATION_DISCTANCE,
+                            locationListener);
         } else {
             SnackBarError.getSnackBar( getResources().getString(R.string.permission_denied) ).show();
         }
     }
 
     private void searchHistories(Location location) {
-        SnackBarError.getSnackBar(Double.toString(currentLocation.getLatitude()) + "," + Double.toString(currentLocation.getLongitude()) ).show();
+        currentLocation = location;
+        String LocationStr = Double.toString(currentLocation.getLatitude()) + "," + Double.toString(currentLocation.getLongitude());
+        Log.i( "LOCATION", LocationStr );
+
+        SnackBarError.getSnackBar(LocationStr ).show();
 
         searchData data = new searchData(Double.toString(location.getLatitude()),  Double.toString(location.getLongitude()) , "0");
 
