@@ -1,7 +1,7 @@
 class LocationController < ApplicationController
 
   def search
-    user_info = user_location_params
+    user_info = degToRad(user_location_params)
 
     if params[:user_info][:purged] == "1"
       histories = History.where('likes > 5').includes(:tags)
@@ -23,25 +23,27 @@ class LocationController < ApplicationController
 
   def get_distance(u_location, a_location)
     #convert to floats
-    destiny = Hash.new
-    destiny[:latitude] = a_location[:latitude].to_f
-    destiny[:longitude] = a_location[:longitude].to_f
+    destiny = degToRad(a_location)
 
-    u_location[:latitude] = u_location[:latitude].to_f
-    u_location[:longitude] = u_location[:longitude].to_f
+    # uses  Haversine's formula
+    earth_radius = 6373
+    d_lon = destiny[:longitude] - u_location[:longitude]
+    d_lat = destiny[:latitude] - u_location[:latitude]
 
-    # uses 's formula's formula
-    earth_radius = 6371
-    d_lon = u_location[:longitude] - destiny[:longitude]
-    d_lat = u_location[:latitude] - destiny[:latitude]
-
-    a = ( (Math::sin(d_lat/2) ** 2) + Math::cos( destiny[:latitude]) * Math::cos( u_location[:latitude]) * Math::sin(d_lon/2) ) ** 2
+    a = (Math::sin(d_lat/2) ** 2) + Math::cos( u_location[:latitude]) * Math::cos( destiny[:latitude]) * (Math::sin(d_lon/2)  ** 2)
     c = 2 * Math::atan2( Math::sqrt(a), Math::sqrt(1-a) )
     d = earth_radius * c
-    return c
+
+    return d
   end
 
   private
+    def degToRad(deg)
+      location = Hash.new
+      location[:latitude] = (deg[:latitude].to_f * Math::PI / 180)
+      location[:longitude] = (deg[:longitude].to_f * Math::PI / 180)
+      return location
+    end
     def user_location_params
       params.require(:user_info).permit(:longitude, :latitude, :purged)
     end

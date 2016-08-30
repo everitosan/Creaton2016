@@ -3743,3 +3743,841 @@ Unpermitted parameters: audio, tag
   [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "histories_tags" ("tag_id", "history_id") VALUES ($1, $2) RETURNING "id"[0m  [["tag_id", 1], ["history_id", 6]]
   [1m[35m (0.6ms)[0m  COMMIT
 Completed 200 OK in 125ms (Views: 0.2ms | ActiveRecord: 21.5ms)
+
+
+Started GET "/" for ::1 at 2016-08-30 09:58:25 -0500
+
+PG::ConnectionBad (could not connect to server: No such file or directory
+	Is the server running locally and accepting
+	connections on Unix domain socket "/tmp/.s.PGSQL.5432"?
+):
+  activerecord (4.2.5) lib/active_record/connection_adapters/postgresql_adapter.rb:651:in `initialize'
+  activerecord (4.2.5) lib/active_record/connection_adapters/postgresql_adapter.rb:651:in `new'
+  activerecord (4.2.5) lib/active_record/connection_adapters/postgresql_adapter.rb:651:in `connect'
+  activerecord (4.2.5) lib/active_record/connection_adapters/postgresql_adapter.rb:242:in `initialize'
+  activerecord (4.2.5) lib/active_record/connection_adapters/postgresql_adapter.rb:44:in `new'
+  activerecord (4.2.5) lib/active_record/connection_adapters/postgresql_adapter.rb:44:in `postgresql_connection'
+  activerecord (4.2.5) lib/active_record/connection_adapters/abstract/connection_pool.rb:438:in `new_connection'
+  activerecord (4.2.5) lib/active_record/connection_adapters/abstract/connection_pool.rb:448:in `checkout_new_connection'
+  activerecord (4.2.5) lib/active_record/connection_adapters/abstract/connection_pool.rb:422:in `acquire_connection'
+  activerecord (4.2.5) lib/active_record/connection_adapters/abstract/connection_pool.rb:349:in `block in checkout'
+  /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/monitor.rb:211:in `mon_synchronize'
+  activerecord (4.2.5) lib/active_record/connection_adapters/abstract/connection_pool.rb:348:in `checkout'
+  activerecord (4.2.5) lib/active_record/connection_adapters/abstract/connection_pool.rb:263:in `block in connection'
+  /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/monitor.rb:211:in `mon_synchronize'
+  activerecord (4.2.5) lib/active_record/connection_adapters/abstract/connection_pool.rb:262:in `connection'
+  activerecord (4.2.5) lib/active_record/connection_adapters/abstract/connection_pool.rb:571:in `retrieve_connection'
+  activerecord (4.2.5) lib/active_record/connection_handling.rb:113:in `retrieve_connection'
+  activerecord (4.2.5) lib/active_record/connection_handling.rb:87:in `connection'
+  activerecord (4.2.5) lib/active_record/migration.rb:383:in `connection'
+  activerecord (4.2.5) lib/active_record/migration.rb:370:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.5) lib/active_support/callbacks.rb:88:in `__run_callbacks__'
+  activesupport (4.2.5) lib/active_support/callbacks.rb:778:in `_run_call_callbacks'
+  activesupport (4.2.5) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.5) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.5) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5) lib/rails/application.rb:165:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/webrick/httpserver.rb:138:in `service'
+  /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/webrick/httpserver.rb:94:in `run'
+  /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Library/Ruby/Gems/2.0.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.9ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.9ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (24.6ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (35.7ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (27.6ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (89.1ms)
+
+
+Started GET "/" for ::1 at 2016-08-30 09:58:38 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (1.9ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by HistoryController#index as */*
+  [1m[35mHistory Load (2.6ms)[0m  SELECT "histories".* FROM "histories"
+  [1m[36mHABTM_Tags Load (2.3ms)[0m  [1mSELECT "histories_tags".* FROM "histories_tags" WHERE "histories_tags"."history_id" IN (2, 1, 3, 4, 5, 6)[0m
+  [1m[35mTag Load (1.8ms)[0m  SELECT "tags".* FROM "tags" WHERE "tags"."id" IN (1)
+Completed 200 OK in 153ms (Views: 0.1ms | ActiveRecord: 23.0ms)
+
+
+Started POST "/history/search" for ::1 at 2016-08-30 09:58:52 -0500
+Processing by LocationController#search as */*
+  Parameters: {"user_info"=>{"longitude"=>"19.24669411", "latitude"=>"-99.17505989", "purged"=>"0"}}
+Can't verify CSRF token authenticity
+  [1m[36mHistory Load (1.2ms)[0m  [1mSELECT "histories".* FROM "histories"[0m
+  [1m[35mHABTM_Tags Load (2.1ms)[0m  SELECT "histories_tags".* FROM "histories_tags" WHERE "histories_tags"."history_id" IN (2, 1, 3, 4, 5, 6)
+  [1m[36mTag Load (0.8ms)[0m  [1mSELECT "tags".* FROM "tags" WHERE "tags"."id" IN (1)[0m
+Distance to sounds 0.4536867132001884
+Distance to sounds 0.4536867132001884
+Distance to sounds 0.4536867132001884
+Distance to sounds 0.4536867132001884
+Distance to sounds 0.4536867132001884
+Distance to sounds 0.4536867132001884
+Completed 200 OK in 23ms (Views: 0.2ms | ActiveRecord: 4.1ms)
+
+
+Started GET "/" for ::1 at 2016-08-30 09:59:00 -0500
+Processing by HistoryController#index as */*
+  [1m[35mHistory Load (1.9ms)[0m  SELECT "histories".* FROM "histories"
+  [1m[36mHABTM_Tags Load (0.8ms)[0m  [1mSELECT "histories_tags".* FROM "histories_tags" WHERE "histories_tags"."history_id" IN (2, 1, 3, 4, 5, 6)[0m
+  [1m[35mTag Load (1.0ms)[0m  SELECT "tags".* FROM "tags" WHERE "tags"."id" IN (1)
+Completed 200 OK in 20ms (Views: 0.3ms | ActiveRecord: 3.7ms)
+
+
+Started POST "/history/search" for ::1 at 2016-08-30 10:31:07 -0500
+Processing by LocationController#search as */*
+  Parameters: {"user_info"=>{"longitude"=>"19.24669411", "latitude"=>"-99.17505989", "purged"=>"0"}}
+Can't verify CSRF token authenticity
+  [1m[36mHistory Load (0.8ms)[0m  [1mSELECT "histories".* FROM "histories"[0m
+  [1m[35mHABTM_Tags Load (0.5ms)[0m  SELECT "histories_tags".* FROM "histories_tags" WHERE "histories_tags"."history_id" IN (2, 1, 3, 4, 5, 6)
+  [1m[36mTag Load (0.4ms)[0m  [1mSELECT "tags".* FROM "tags" WHERE "tags"."id" IN (1)[0m
+Distance to sounds 0.4536867132001884
+Distance to sounds 0.4536867132001884
+Distance to sounds 0.4536867132001884
+Distance to sounds 0.4536867132001884
+Distance to sounds 0.4536867132001884
+Distance to sounds 0.4536867132001884
+Completed 200 OK in 71ms (Views: 0.4ms | ActiveRecord: 10.6ms)
+
+
+Started POST "/history/search" for ::1 at 2016-08-30 10:31:59 -0500
+Processing by LocationController#search as */*
+  Parameters: {"user_info"=>{"longitude"=>"19.24669411", "latitude"=>"-99.17505989", "purged"=>"0"}}
+Can't verify CSRF token authenticity
+  [1m[35mHistory Load (0.5ms)[0m  SELECT "histories".* FROM "histories"
+  [1m[36mHABTM_Tags Load (0.4ms)[0m  [1mSELECT "histories_tags".* FROM "histories_tags" WHERE "histories_tags"."history_id" IN (2, 1, 3, 4, 5, 6)[0m
+  [1m[35mTag Load (0.3ms)[0m  SELECT "tags".* FROM "tags" WHERE "tags"."id" IN (1)
+Distance to sounds 1.3128797930232172
+Distance to sounds 1.6853256090653068
+Distance to sounds 1.684968148635251
+Distance to sounds 1.6849680397252957
+Distance to sounds 1.6849680396921194
+Distance to sounds 1.6849680396921096
+Completed 200 OK in 50ms (Views: 0.2ms | ActiveRecord: 8.6ms)
+
+
+Started POST "/history/search" for ::1 at 2016-08-30 10:36:30 -0500
+Processing by LocationController#search as */*
+  Parameters: {"user_info"=>{"longitude"=>"19.24669411", "latitude"=>"-99.17505989", "purged"=>"0"}}
+Can't verify CSRF token authenticity
+  [1m[36mHistory Load (0.5ms)[0m  [1mSELECT "histories".* FROM "histories"[0m
+  [1m[35mHABTM_Tags Load (0.3ms)[0m  SELECT "histories_tags".* FROM "histories_tags" WHERE "histories_tags"."history_id" IN (2, 1, 3, 4, 5, 6)
+  [1m[36mTag Load (0.4ms)[0m  [1mSELECT "tags".* FROM "tags" WHERE "tags"."id" IN (1)[0m
+Distance to sounds 8366.982920936964
+Distance to sounds 10740.580106573201
+Distance to sounds 10738.302011252455
+Distance to sounds 10738.30131716931
+Distance to sounds 10738.301316957877
+Distance to sounds 10738.301316957815
+Completed 200 OK in 45ms (Views: 0.2ms | ActiveRecord: 7.9ms)
+
+
+Started POST "/history/search" for ::1 at 2016-08-30 10:37:55 -0500
+Processing by LocationController#search as */*
+  Parameters: {"user_info"=>{"longitude"=>"19.24669411", "latitude"=>"-99.17505989", "purged"=>"0"}}
+Can't verify CSRF token authenticity
+  [1m[35mHistory Load (1.1ms)[0m  SELECT "histories".* FROM "histories"
+  [1m[36mHABTM_Tags Load (1.4ms)[0m  [1mSELECT "histories_tags".* FROM "histories_tags" WHERE "histories_tags"."history_id" IN (2, 1, 3, 4, 5, 6)[0m
+  [1m[35mTag Load (0.9ms)[0m  SELECT "tags".* FROM "tags" WHERE "tags"."id" IN (1)
+Distance to sounds 8366.982920936964
+Distance to sounds 10740.580106573201
+Distance to sounds 10738.302011252455
+Distance to sounds 10738.30131716931
+Distance to sounds 10738.301316957877
+Distance to sounds 10738.301316957815
+Completed 200 OK in 16ms (Views: 0.1ms | ActiveRecord: 3.4ms)
+
+
+Started POST "/history/search" for ::1 at 2016-08-30 10:38:10 -0500
+Processing by LocationController#search as */*
+  Parameters: {"user_info"=>{"longitude"=>"19.4379897", "latitude"=>"-99.137699", "purged"=>"0"}}
+Can't verify CSRF token authenticity
+  [1m[36mHistory Load (0.8ms)[0m  [1mSELECT "histories".* FROM "histories"[0m
+  [1m[35mHABTM_Tags Load (2.5ms)[0m  SELECT "histories_tags".* FROM "histories_tags" WHERE "histories_tags"."history_id" IN (2, 1, 3, 4, 5, 6)
+  [1m[36mTag Load (1.0ms)[0m  [1mSELECT "tags".* FROM "tags" WHERE "tags"."id" IN (1)[0m
+Distance to sounds 8368.70909355897
+Distance to sounds 10740.585430200334
+Distance to sounds 10738.302012873755
+Distance to sounds 10738.301317169802
+Distance to sounds 10738.301316957877
+Distance to sounds 10738.301316957815
+Completed 200 OK in 17ms (Views: 0.1ms | ActiveRecord: 4.2ms)
+
+
+Started POST "/history/search" for ::1 at 2016-08-30 10:38:32 -0500
+Processing by LocationController#search as */*
+  Parameters: {"user_info"=>{"longitude"=>"19.4379897", "latitude"=>"-99.137699", "purged"=>"0"}}
+Can't verify CSRF token authenticity
+  [1m[35mHistory Load (2.3ms)[0m  SELECT "histories".* FROM "histories"
+  [1m[36mHABTM_Tags Load (0.8ms)[0m  [1mSELECT "histories_tags".* FROM "histories_tags" WHERE "histories_tags"."history_id" IN (2, 1, 3, 4, 5, 6)[0m
+  [1m[35mTag Load (0.9ms)[0m  SELECT "tags".* FROM "tags" WHERE "tags"."id" IN (1)
+Distance to sounds 8368.70909355897
+Distance to sounds 10740.585430200334
+Distance to sounds 10738.302012873755
+Distance to sounds 10738.301317169802
+Distance to sounds 10738.301316957877
+Distance to sounds 10738.301316957815
+Completed 200 OK in 14ms (Views: 0.1ms | ActiveRecord: 3.9ms)
+
+
+Started POST "/history/search" for ::1 at 2016-08-30 10:40:53 -0500
+Processing by LocationController#search as */*
+  Parameters: {"user_info"=>{"longitude"=>"19.4379897", "latitude"=>"-99.137699", "purged"=>"0"}}
+Can't verify CSRF token authenticity
+  [1m[36mHistory Load (0.5ms)[0m  [1mSELECT "histories".* FROM "histories"[0m
+  [1m[35mHABTM_Tags Load (0.4ms)[0m  SELECT "histories_tags".* FROM "histories_tags" WHERE "histories_tags"."history_id" IN (2, 1, 3, 4, 5, 6)
+  [1m[36mTag Load (0.4ms)[0m  [1mSELECT "tags".* FROM "tags" WHERE "tags"."id" IN (1)[0m
+from: -99.137699, 19.4379897 to 19.4379897, -99.137699
+Distance to sounds 8368.70909355897
+from: -1.7302792604010897, 0.3392569202337448 to 19.4379897, -99.137699
+from: -0.030199070072971353, 0.005921150268254617 to 19.4379897, -99.137699
+Distance to sounds 10740.585430200334
+from: -0.0005270732038138343, 0.00010334356768638856 to 19.4379897, -99.137699
+from: -9.199162805586542e-06, 1.803685516885099e-06 to 19.4379897, -99.137699
+Distance to sounds 10738.302012873755
+from: -1.6055567938448416e-07, 3.148025094018075e-08 to 19.4379897, -99.137699
+from: -2.802225238035631e-09, 5.494340282601946e-10 to 19.4379897, -99.137699
+Distance to sounds 10738.301317169802
+from: -4.8908056786203595e-11, 9.589432815635967e-12 to 19.4379897, -99.137699
+from: -8.536066216716091e-13, 1.6736717603163802e-13 to 19.4379897, -99.137699
+Distance to sounds 10738.301316957877
+from: -1.489824606499516e-14, 2.9211082815170203e-15 to 19.4379897, -99.137699
+from: -2.6002344660645464e-16, 5.098295731974543e-17 to 19.4379897, -99.137699
+Distance to sounds 10738.301316957815
+from: -4.5382652756663094e-18, 8.89820467633301e-19 to 19.4379897, -99.137699
+Completed 200 OK in 51ms (Views: 0.1ms | ActiveRecord: 8.6ms)
+
+
+Started POST "/history/search" for ::1 at 2016-08-30 10:41:18 -0500
+Processing by LocationController#search as */*
+  Parameters: {"user_info"=>{"longitude"=>"-99.137699", "latitude"=>"19.4379897", "purged"=>"0"}}
+Can't verify CSRF token authenticity
+  [1m[35mHistory Load (2.0ms)[0m  SELECT "histories".* FROM "histories"
+  [1m[36mHABTM_Tags Load (0.9ms)[0m  [1mSELECT "histories_tags".* FROM "histories_tags" WHERE "histories_tags"."history_id" IN (2, 1, 3, 4, 5, 6)[0m
+  [1m[35mTag Load (0.9ms)[0m  SELECT "tags".* FROM "tags" WHERE "tags"."id" IN (1)
+from: 19.4379897, -99.137699 to 19.4379897, -99.137699
+Distance to sounds 0.0
+from: 0.3392569202337448, -1.7302792604010897 to 19.4379897, -99.137699
+from: 0.005921150268254617, -0.030199070072971353 to 19.4379897, -99.137699
+Distance to sounds 10734.885731237344
+from: 0.00010334356768638856, -0.0005270732038138343 to 19.4379897, -99.137699
+from: 1.803685516885099e-06, -9.199162805586542e-06 to 19.4379897, -99.137699
+Distance to sounds 10738.300276507669
+from: 3.148025094018075e-08, -1.6055567938448416e-07 to 19.4379897, -99.137699
+from: 5.494340282601946e-10, -2.802225238035631e-09 to 19.4379897, -99.137699
+Distance to sounds 10738.301316640876
+from: 9.589432815635967e-12, -4.8908056786203595e-11 to 19.4379897, -99.137699
+from: 1.6736717603163802e-13, -8.536066216716091e-13 to 19.4379897, -99.137699
+Distance to sounds 10738.30131695772
+from: 2.9211082815170203e-15, -1.489824606499516e-14 to 19.4379897, -99.137699
+from: 5.098295731974543e-17, -2.6002344660645464e-16 to 19.4379897, -99.137699
+Distance to sounds 10738.301316957815
+from: 8.89820467633301e-19, -4.5382652756663094e-18 to 19.4379897, -99.137699
+Completed 200 OK in 17ms (Views: 0.2ms | ActiveRecord: 3.7ms)
+
+
+Started POST "/history/search" for ::1 at 2016-08-30 10:41:41 -0500
+Processing by LocationController#search as */*
+  Parameters: {"user_info"=>{"longitude"=>"-99.137699", "latitude"=>"19.4379897", "purged"=>"0"}}
+Can't verify CSRF token authenticity
+  [1m[36mHistory Load (0.4ms)[0m  [1mSELECT "histories".* FROM "histories"[0m
+  [1m[35mHABTM_Tags Load (0.4ms)[0m  SELECT "histories_tags".* FROM "histories_tags" WHERE "histories_tags"."history_id" IN (2, 1, 3, 4, 5, 6)
+  [1m[36mTag Load (0.3ms)[0m  [1mSELECT "tags".* FROM "tags" WHERE "tags"."id" IN (1)[0m
+Distance to sounds 0.0
+Distance to sounds 10734.885731237344
+Distance to sounds 10738.300276507669
+Distance to sounds 10738.301316640876
+Distance to sounds 10738.30131695772
+Distance to sounds 10738.301316957815
+Completed 200 OK in 43ms (Views: 0.2ms | ActiveRecord: 7.7ms)
+
+
+Started POST "/history/search" for ::1 at 2016-08-30 10:42:00 -0500
+Processing by LocationController#search as */*
+  Parameters: {"user_info"=>{"longitude"=>"-99.137699", "latitude"=>"19.4379897", "purged"=>"0"}}
+Can't verify CSRF token authenticity
+  [1m[35mHistory Load (0.7ms)[0m  SELECT "histories".* FROM "histories"
+  [1m[36mHABTM_Tags Load (0.6ms)[0m  [1mSELECT "histories_tags".* FROM "histories_tags" WHERE "histories_tags"."history_id" IN (2, 1, 3, 4, 5, 6)[0m
+  [1m[35mTag Load (0.4ms)[0m  SELECT "tags".* FROM "tags" WHERE "tags"."id" IN (1)
+from: 19.4379897, -99.137699 to 19.4379897, -99.137699
+Distance to sounds 0.0
+from: 0.3392569202337448, -1.7302792604010897 to 19.4379897, -99.137699
+from: 0.005921150268254617, -0.030199070072971353 to 19.4379897, -99.137699
+Distance to sounds 10734.885731237344
+from: 0.00010334356768638856, -0.0005270732038138343 to 19.4379897, -99.137699
+from: 1.803685516885099e-06, -9.199162805586542e-06 to 19.4379897, -99.137699
+Distance to sounds 10738.300276507669
+from: 3.148025094018075e-08, -1.6055567938448416e-07 to 19.4379897, -99.137699
+from: 5.494340282601946e-10, -2.802225238035631e-09 to 19.4379897, -99.137699
+Distance to sounds 10738.301316640876
+from: 9.589432815635967e-12, -4.8908056786203595e-11 to 19.4379897, -99.137699
+from: 1.6736717603163802e-13, -8.536066216716091e-13 to 19.4379897, -99.137699
+Distance to sounds 10738.30131695772
+from: 2.9211082815170203e-15, -1.489824606499516e-14 to 19.4379897, -99.137699
+from: 5.098295731974543e-17, -2.6002344660645464e-16 to 19.4379897, -99.137699
+Distance to sounds 10738.301316957815
+from: 8.89820467633301e-19, -4.5382652756663094e-18 to 19.4379897, -99.137699
+Completed 200 OK in 56ms (Views: 0.2ms | ActiveRecord: 10.0ms)
+
+
+Started POST "/history/search" for ::1 at 2016-08-30 10:52:48 -0500
+Processing by LocationController#search as */*
+  Parameters: {"user_info"=>{"longitude"=>"-99.137699", "latitude"=>"19.4379897", "purged"=>"0"}}
+Can't verify CSRF token authenticity
+  [1m[36mHistory Load (0.7ms)[0m  [1mSELECT "histories".* FROM "histories"[0m
+  [1m[35mHABTM_Tags Load (0.4ms)[0m  SELECT "histories_tags".* FROM "histories_tags" WHERE "histories_tags"."history_id" IN (2, 1, 3, 4, 5, 6)
+  [1m[36mTag Load (0.4ms)[0m  [1mSELECT "tags".* FROM "tags" WHERE "tags"."id" IN (1)[0m
+from: 0.3392569202337448, -1.7302792604010897 to 19.4379897, -99.137699
+Distance to sounds 0.0
+from: 0.3392569202337448, -1.7302792604010897 to 19.4379897, -99.137699
+from: 0.3392569202337448, -1.7302792604010897 to 19.4379897, -99.137699
+Distance to sounds 0.0
+from: 0.3392569202337448, -1.7302792604010897 to 19.4379897, -99.137699
+from: 0.3392569202337448, -1.7302792604010897 to 19.4379897, -99.137699
+Distance to sounds 0.0
+from: 0.3392569202337448, -1.7302792604010897 to 19.4379897, -99.137699
+from: 0.3392569202337448, -1.7302792604010897 to 19.4379897, -99.137699
+Distance to sounds 0.0
+from: 0.3392569202337448, -1.7302792604010897 to 19.4379897, -99.137699
+from: 0.3392569202337448, -1.7302792604010897 to 19.4379897, -99.137699
+Distance to sounds 0.0
+from: 0.3392569202337448, -1.7302792604010897 to 19.4379897, -99.137699
+from: 0.3392569202337448, -1.7302792604010897 to 19.4379897, -99.137699
+Distance to sounds 0.0
+from: 0.3392569202337448, -1.7302792604010897 to 19.4379897, -99.137699
+Completed 200 OK in 130ms (Views: 0.5ms | ActiveRecord: 10.3ms)
+
+
+Started POST "/history/search" for ::1 at 2016-08-30 10:53:14 -0500
+Processing by LocationController#search as */*
+  Parameters: {"user_info"=>{"longitude"=>"-99.137699", "latitude"=>"19.4379897", "purged"=>"0"}}
+Can't verify CSRF token authenticity
+  [1m[35mHistory Load (0.4ms)[0m  SELECT "histories".* FROM "histories"
+  [1m[36mHABTM_Tags Load (0.3ms)[0m  [1mSELECT "histories_tags".* FROM "histories_tags" WHERE "histories_tags"."history_id" IN (2, 1, 3, 4, 5, 6)[0m
+  [1m[35mTag Load (0.4ms)[0m  SELECT "tags".* FROM "tags" WHERE "tags"."id" IN (1)
+Distance to sounds 0.0
+Distance to sounds 0.0
+Distance to sounds 0.0
+Distance to sounds 0.0
+Distance to sounds 0.0
+Distance to sounds 0.0
+Completed 200 OK in 52ms (Views: 0.2ms | ActiveRecord: 8.3ms)
+
+
+Started POST "/history/search" for ::1 at 2016-08-30 10:54:18 -0500
+Processing by LocationController#search as */*
+  Parameters: {"user_info"=>{"latitude"=>"19.2467706", "longitude"=>"-99.1764056", "purged"=>"0"}}
+Can't verify CSRF token authenticity
+  [1m[36mHistory Load (0.4ms)[0m  [1mSELECT "histories".* FROM "histories"[0m
+  [1m[35mHABTM_Tags Load (0.4ms)[0m  SELECT "histories_tags".* FROM "histories_tags" WHERE "histories_tags"."history_id" IN (2, 1, 3, 4, 5, 6)
+  [1m[36mTag Load (0.6ms)[0m  [1mSELECT "tags".* FROM "tags" WHERE "tags"."id" IN (1)[0m
+Distance to sounds 3.7975229380509177
+Distance to sounds 3.7975229380509177
+Distance to sounds 3.7975229380509177
+Distance to sounds 3.7975229380509177
+Distance to sounds 3.7975229380509177
+Distance to sounds 3.7975229380509177
+Completed 200 OK in 57ms (Views: 0.2ms | ActiveRecord: 8.7ms)
+
+
+Started POST "/history/search" for ::1 at 2016-08-30 10:57:26 -0500
+Processing by LocationController#search as */*
+  Parameters: {"user_info"=>{"latitude"=>"19.2467706", "longitude"=>"-99.1764056", "purged"=>"0"}}
+Can't verify CSRF token authenticity
+  [1m[35mHistory Load (0.4ms)[0m  SELECT "histories".* FROM "histories"
+  [1m[36mHABTM_Tags Load (0.5ms)[0m  [1mSELECT "histories_tags".* FROM "histories_tags" WHERE "histories_tags"."history_id" IN (2, 1, 3, 4, 5, 6)[0m
+  [1m[35mTag Load (0.5ms)[0m  SELECT "tags".* FROM "tags" WHERE "tags"."id" IN (1)
+Distance to sounds 3.7975229380509177
+Distance to sounds 3.7975229380509177
+Distance to sounds 3.7975229380509177
+Distance to sounds 3.7975229380509177
+Distance to sounds 3.7975229380509177
+Distance to sounds 3.7975229380509177
+Completed 200 OK in 10ms (Views: 0.1ms | ActiveRecord: 1.4ms)
+
+
+Started POST "/history/search" for ::1 at 2016-08-30 11:06:57 -0500
+Processing by LocationController#search as */*
+  Parameters: {"user_info"=>{"latitude"=>"19.2467706", "longitude"=>"-99.1764056", "purged"=>"0"}}
+Can't verify CSRF token authenticity
+  [1m[36mHistory Load (0.4ms)[0m  [1mSELECT "histories".* FROM "histories"[0m
+  [1m[35mHABTM_Tags Load (0.4ms)[0m  SELECT "histories_tags".* FROM "histories_tags" WHERE "histories_tags"."history_id" IN (2, 1, 3, 4, 5, 6)
+  [1m[36mTag Load (0.3ms)[0m  [1mSELECT "tags".* FROM "tags" WHERE "tags"."id" IN (1)[0m
+a: 8.876729185270565e-08
+c: 0.0005958768143811263
+d: 3.7975229380509177
+a: 8.876729185270565e-08
+c: 0.0005958768143811263
+d: 3.7975229380509177
+a: 8.876729185270565e-08
+c: 0.0005958768143811263
+d: 3.7975229380509177
+a: 8.876729185270565e-08
+c: 0.0005958768143811263
+d: 3.7975229380509177
+a: 8.876729185270565e-08
+c: 0.0005958768143811263
+d: 3.7975229380509177
+a: 8.876729185270565e-08
+c: 0.0005958768143811263
+d: 3.7975229380509177
+a: 8.876729185270565e-08
+c: 0.0005958768143811263
+d: 3.7975229380509177
+a: 8.876729185270565e-08
+c: 0.0005958768143811263
+d: 3.7975229380509177
+a: 8.876729185270565e-08
+c: 0.0005958768143811263
+d: 3.7975229380509177
+a: 8.876729185270565e-08
+c: 0.0005958768143811263
+d: 3.7975229380509177
+a: 8.876729185270565e-08
+c: 0.0005958768143811263
+d: 3.7975229380509177
+a: 8.876729185270565e-08
+c: 0.0005958768143811263
+d: 3.7975229380509177
+Completed 200 OK in 46ms (Views: 0.3ms | ActiveRecord: 7.4ms)
+
+
+Started POST "/history/search" for ::1 at 2016-08-30 11:09:11 -0500
+Processing by LocationController#search as */*
+  Parameters: {"user_info"=>{"latitude"=>"19.2467706", "longitude"=>"-99.1764056", "purged"=>"0"}}
+Can't verify CSRF token authenticity
+  [1m[35mHistory Load (0.6ms)[0m  SELECT "histories".* FROM "histories"
+  [1m[36mHABTM_Tags Load (0.3ms)[0m  [1mSELECT "histories_tags".* FROM "histories_tags" WHERE "histories_tags"."history_id" IN (2, 1, 3, 4, 5, 6)[0m
+  [1m[35mTag Load (0.3ms)[0m  SELECT "tags".* FROM "tags" WHERE "tags"."id" IN (1)
+d_lon: -0.0006755576122525753
+d_lat: -0.0033374028877002915
+a: 8.876729185270565e-08
+c: 0.0005958768143811263
+d: 3.7975229380509177
+-------
+
+d_lon: -0.0006755576122525753
+d_lat: -0.0033374028877002915
+a: 8.876729185270565e-08
+c: 0.0005958768143811263
+d: 3.7975229380509177
+-------
+
+d_lon: -0.0006755576122525753
+d_lat: -0.0033374028877002915
+a: 8.876729185270565e-08
+c: 0.0005958768143811263
+d: 3.7975229380509177
+-------
+
+d_lon: -0.0006755576122525753
+d_lat: -0.0033374028877002915
+a: 8.876729185270565e-08
+c: 0.0005958768143811263
+d: 3.7975229380509177
+-------
+
+d_lon: -0.0006755576122525753
+d_lat: -0.0033374028877002915
+a: 8.876729185270565e-08
+c: 0.0005958768143811263
+d: 3.7975229380509177
+-------
+
+d_lon: -0.0006755576122525753
+d_lat: -0.0033374028877002915
+a: 8.876729185270565e-08
+c: 0.0005958768143811263
+d: 3.7975229380509177
+-------
+
+d_lon: -0.0006755576122525753
+d_lat: -0.0033374028877002915
+a: 8.876729185270565e-08
+c: 0.0005958768143811263
+d: 3.7975229380509177
+-------
+
+d_lon: -0.0006755576122525753
+d_lat: -0.0033374028877002915
+a: 8.876729185270565e-08
+c: 0.0005958768143811263
+d: 3.7975229380509177
+-------
+
+d_lon: -0.0006755576122525753
+d_lat: -0.0033374028877002915
+a: 8.876729185270565e-08
+c: 0.0005958768143811263
+d: 3.7975229380509177
+-------
+
+d_lon: -0.0006755576122525753
+d_lat: -0.0033374028877002915
+a: 8.876729185270565e-08
+c: 0.0005958768143811263
+d: 3.7975229380509177
+-------
+
+d_lon: -0.0006755576122525753
+d_lat: -0.0033374028877002915
+a: 8.876729185270565e-08
+c: 0.0005958768143811263
+d: 3.7975229380509177
+-------
+
+d_lon: -0.0006755576122525753
+d_lat: -0.0033374028877002915
+a: 8.876729185270565e-08
+c: 0.0005958768143811263
+d: 3.7975229380509177
+-------
+
+Completed 200 OK in 56ms (Views: 0.2ms | ActiveRecord: 8.1ms)
+
+
+Started POST "/history/search" for ::1 at 2016-08-30 11:16:38 -0500
+Processing by LocationController#search as */*
+  Parameters: {"user_info"=>{"latitude"=>"19.2467706", "longitude"=>"-99.1764056", "purged"=>"0"}}
+Can't verify CSRF token authenticity
+  [1m[36mHistory Load (0.5ms)[0m  [1mSELECT "histories".* FROM "histories"[0m
+  [1m[35mHABTM_Tags Load (0.4ms)[0m  SELECT "histories_tags".* FROM "histories_tags" WHERE "histories_tags"."history_id" IN (2, 1, 3, 4, 5, 6)
+  [1m[36mTag Load (0.4ms)[0m  [1mSELECT "tags".* FROM "tags" WHERE "tags"."id" IN (1)[0m
+to 0.3359195173460445 from 0.3392569202337448
+to 0.3359195173460445 from 0.3392569202337448
+to 0.3359195173460445 from 0.3392569202337448
+to 0.3359195173460445 from 0.3392569202337448
+to 0.3359195173460445 from 0.3392569202337448
+to 0.3359195173460445 from 0.3392569202337448
+to 0.3359195173460445 from 0.3392569202337448
+to 0.3359195173460445 from 0.3392569202337448
+to 0.3359195173460445 from 0.3392569202337448
+to 0.3359195173460445 from 0.3392569202337448
+to 0.3359195173460445 from 0.3392569202337448
+to 0.3359195173460445 from 0.3392569202337448
+Completed 200 OK in 45ms (Views: 0.2ms | ActiveRecord: 7.9ms)
+
+
+Started POST "/history/search" for ::1 at 2016-08-30 11:19:26 -0500
+Processing by LocationController#search as */*
+  Parameters: {"user_info"=>{"latitude"=>"19.2467706", "longitude"=>"-99.1764056", "purged"=>"0"}}
+Can't verify CSRF token authenticity
+  [1m[35mHistory Load (0.5ms)[0m  SELECT "histories".* FROM "histories"
+  [1m[36mHABTM_Tags Load (0.3ms)[0m  [1mSELECT "histories_tags".* FROM "histories_tags" WHERE "histories_tags"."history_id" IN (2, 1, 3, 4, 5, 6)[0m
+  [1m[35mTag Load (0.4ms)[0m  SELECT "tags".* FROM "tags" WHERE "tags"."id" IN (1)
+to 0.3359195173460445 from 0.3392569202337448
+-------
+
+to 0.3359195173460445 from 0.3392569202337448
+-------
+
+to 0.3359195173460445 from 0.3392569202337448
+-------
+
+to 0.3359195173460445 from 0.3392569202337448
+-------
+
+to 0.3359195173460445 from 0.3392569202337448
+-------
+
+to 0.3359195173460445 from 0.3392569202337448
+-------
+
+to 0.3359195173460445 from 0.3392569202337448
+-------
+
+to 0.3359195173460445 from 0.3392569202337448
+-------
+
+to 0.3359195173460445 from 0.3392569202337448
+-------
+
+to 0.3359195173460445 from 0.3392569202337448
+-------
+
+to 0.3359195173460445 from 0.3392569202337448
+-------
+
+to 0.3359195173460445 from 0.3392569202337448
+-------
+
+Completed 200 OK in 48ms (Views: 0.2ms | ActiveRecord: 8.2ms)
+
+
+Started POST "/history/search" for ::1 at 2016-08-30 11:19:42 -0500
+Processing by LocationController#search as */*
+  Parameters: {"user_info"=>{"latitude"=>"19.2467706", "longitude"=>"-99.1764056", "purged"=>"0"}}
+Can't verify CSRF token authenticity
+  [1m[36mHistory Load (0.4ms)[0m  [1mSELECT "histories".* FROM "histories"[0m
+  [1m[35mHABTM_Tags Load (0.4ms)[0m  SELECT "histories_tags".* FROM "histories_tags" WHERE "histories_tags"."history_id" IN (2, 1, 3, 4, 5, 6)
+  [1m[36mTag Load (0.5ms)[0m  [1mSELECT "tags".* FROM "tags" WHERE "tags"."id" IN (1)[0m
+d_lon: 0.0006755576122525753
+d_lat: 0.0033374028877002915
+a: 9.211681872161626e-08
+c: 0.0006070150625812152
+d: 3.8685069938300845
+-------
+
+d_lon: 0.0006755576122525753
+d_lat: 0.0033374028877002915
+a: 9.211681872161626e-08
+c: 0.0006070150625812152
+d: 3.8685069938300845
+-------
+
+d_lon: 0.0006755576122525753
+d_lat: 0.0033374028877002915
+a: 9.211681872161626e-08
+c: 0.0006070150625812152
+d: 3.8685069938300845
+-------
+
+d_lon: 0.0006755576122525753
+d_lat: 0.0033374028877002915
+a: 9.211681872161626e-08
+c: 0.0006070150625812152
+d: 3.8685069938300845
+-------
+
+d_lon: 0.0006755576122525753
+d_lat: 0.0033374028877002915
+a: 9.211681872161626e-08
+c: 0.0006070150625812152
+d: 3.8685069938300845
+-------
+
+d_lon: 0.0006755576122525753
+d_lat: 0.0033374028877002915
+a: 9.211681872161626e-08
+c: 0.0006070150625812152
+d: 3.8685069938300845
+-------
+
+d_lon: 0.0006755576122525753
+d_lat: 0.0033374028877002915
+a: 9.211681872161626e-08
+c: 0.0006070150625812152
+d: 3.8685069938300845
+-------
+
+d_lon: 0.0006755576122525753
+d_lat: 0.0033374028877002915
+a: 9.211681872161626e-08
+c: 0.0006070150625812152
+d: 3.8685069938300845
+-------
+
+d_lon: 0.0006755576122525753
+d_lat: 0.0033374028877002915
+a: 9.211681872161626e-08
+c: 0.0006070150625812152
+d: 3.8685069938300845
+-------
+
+d_lon: 0.0006755576122525753
+d_lat: 0.0033374028877002915
+a: 9.211681872161626e-08
+c: 0.0006070150625812152
+d: 3.8685069938300845
+-------
+
+d_lon: 0.0006755576122525753
+d_lat: 0.0033374028877002915
+a: 9.211681872161626e-08
+c: 0.0006070150625812152
+d: 3.8685069938300845
+-------
+
+d_lon: 0.0006755576122525753
+d_lat: 0.0033374028877002915
+a: 9.211681872161626e-08
+c: 0.0006070150625812152
+d: 3.8685069938300845
+-------
+
+Completed 200 OK in 103ms (Views: 0.2ms | ActiveRecord: 8.6ms)
+
+
+Started POST "/history/search" for ::1 at 2016-08-30 11:23:08 -0500
+Processing by LocationController#search as */*
+  Parameters: {"user_info"=>{"latitude"=>"19.2467706", "longitude"=>"-99.1764056", "purged"=>"0"}}
+Can't verify CSRF token authenticity
+  [1m[35mHistory Load (0.6ms)[0m  SELECT "histories".* FROM "histories"
+  [1m[36mHABTM_Tags Load (0.3ms)[0m  [1mSELECT "histories_tags".* FROM "histories_tags" WHERE "histories_tags"."history_id" IN (2, 1, 3, 4, 5, 6)[0m
+  [1m[35mTag Load (0.4ms)[0m  SELECT "tags".* FROM "tags" WHERE "tags"."id" IN (1)
+0.0033374028877002915 - 0.3359195173460445 -> 0.3392569202337448 , 0.0006755576122525753
+-------
+
+0.0033374028877002915 - 0.3359195173460445 -> 0.3392569202337448 , 0.0006755576122525753
+-------
+
+0.0033374028877002915 - 0.3359195173460445 -> 0.3392569202337448 , 0.0006755576122525753
+-------
+
+0.0033374028877002915 - 0.3359195173460445 -> 0.3392569202337448 , 0.0006755576122525753
+-------
+
+0.0033374028877002915 - 0.3359195173460445 -> 0.3392569202337448 , 0.0006755576122525753
+-------
+
+0.0033374028877002915 - 0.3359195173460445 -> 0.3392569202337448 , 0.0006755576122525753
+-------
+
+0.0033374028877002915 - 0.3359195173460445 -> 0.3392569202337448 , 0.0006755576122525753
+-------
+
+0.0033374028877002915 - 0.3359195173460445 -> 0.3392569202337448 , 0.0006755576122525753
+-------
+
+0.0033374028877002915 - 0.3359195173460445 -> 0.3392569202337448 , 0.0006755576122525753
+-------
+
+0.0033374028877002915 - 0.3359195173460445 -> 0.3392569202337448 , 0.0006755576122525753
+-------
+
+0.0033374028877002915 - 0.3359195173460445 -> 0.3392569202337448 , 0.0006755576122525753
+-------
+
+0.0033374028877002915 - 0.3359195173460445 -> 0.3392569202337448 , 0.0006755576122525753
+-------
+
+Completed 200 OK in 52ms (Views: 0.2ms | ActiveRecord: 7.9ms)
+
+
+Started POST "/history/search" for ::1 at 2016-08-30 11:26:52 -0500
+Processing by LocationController#search as */*
+  Parameters: {"user_info"=>{"latitude"=>"19.2467706", "longitude"=>"-99.1764056", "purged"=>"0"}}
+Can't verify CSRF token authenticity
+  [1m[36mHistory Load (0.7ms)[0m  [1mSELECT "histories".* FROM "histories"[0m
+  [1m[35mHABTM_Tags Load (0.5ms)[0m  SELECT "histories_tags".* FROM "histories_tags" WHERE "histories_tags"."history_id" IN (2, 1, 3, 4, 5, 6)
+  [1m[36mTag Load (0.5ms)[0m  [1mSELECT "tags".* FROM "tags" WHERE "tags"."id" IN (1)[0m
+d_lon: 0.0006755576122525753
+d_lat: 0.0033374028877002915
+a: 2.8861397661705304e-06
+c: 0.003397730149835752
+d: 21.653734244903248
+-------
+
+d_lon: 0.0006755576122525753
+d_lat: 0.0033374028877002915
+a: 2.8861397661705304e-06
+c: 0.003397730149835752
+d: 21.653734244903248
+-------
+
+d_lon: 0.0006755576122525753
+d_lat: 0.0033374028877002915
+a: 2.8861397661705304e-06
+c: 0.003397730149835752
+d: 21.653734244903248
+-------
+
+d_lon: 0.0006755576122525753
+d_lat: 0.0033374028877002915
+a: 2.8861397661705304e-06
+c: 0.003397730149835752
+d: 21.653734244903248
+-------
+
+d_lon: 0.0006755576122525753
+d_lat: 0.0033374028877002915
+a: 2.8861397661705304e-06
+c: 0.003397730149835752
+d: 21.653734244903248
+-------
+
+d_lon: 0.0006755576122525753
+d_lat: 0.0033374028877002915
+a: 2.8861397661705304e-06
+c: 0.003397730149835752
+d: 21.653734244903248
+-------
+
+d_lon: 0.0006755576122525753
+d_lat: 0.0033374028877002915
+a: 2.8861397661705304e-06
+c: 0.003397730149835752
+d: 21.653734244903248
+-------
+
+d_lon: 0.0006755576122525753
+d_lat: 0.0033374028877002915
+a: 2.8861397661705304e-06
+c: 0.003397730149835752
+d: 21.653734244903248
+-------
+
+d_lon: 0.0006755576122525753
+d_lat: 0.0033374028877002915
+a: 2.8861397661705304e-06
+c: 0.003397730149835752
+d: 21.653734244903248
+-------
+
+d_lon: 0.0006755576122525753
+d_lat: 0.0033374028877002915
+a: 2.8861397661705304e-06
+c: 0.003397730149835752
+d: 21.653734244903248
+-------
+
+d_lon: 0.0006755576122525753
+d_lat: 0.0033374028877002915
+a: 2.8861397661705304e-06
+c: 0.003397730149835752
+d: 21.653734244903248
+-------
+
+d_lon: 0.0006755576122525753
+d_lat: 0.0033374028877002915
+a: 2.8861397661705304e-06
+c: 0.003397730149835752
+d: 21.653734244903248
+-------
+
+Completed 200 OK in 68ms (Views: 0.5ms | ActiveRecord: 10.9ms)
+
+
+Started POST "/history/search" for ::1 at 2016-08-30 11:27:20 -0500
+Processing by LocationController#search as */*
+  Parameters: {"user_info"=>{"latitude"=>"19.2467706", "longitude"=>"-99.1764056", "purged"=>"0"}}
+Can't verify CSRF token authenticity
+  [1m[35mHistory Load (0.5ms)[0m  SELECT "histories".* FROM "histories"
+  [1m[36mHABTM_Tags Load (0.4ms)[0m  [1mSELECT "histories_tags".* FROM "histories_tags" WHERE "histories_tags"."history_id" IN (2, 1, 3, 4, 5, 6)[0m
+  [1m[35mTag Load (0.4ms)[0m  SELECT "tags".* FROM "tags" WHERE "tags"."id" IN (1)
+Distance to sounds 21.653734244903248
+Distance to sounds 21.653734244903248
+Distance to sounds 21.653734244903248
+Distance to sounds 21.653734244903248
+Distance to sounds 21.653734244903248
+Distance to sounds 21.653734244903248
+Completed 200 OK in 45ms (Views: 0.2ms | ActiveRecord: 7.7ms)
