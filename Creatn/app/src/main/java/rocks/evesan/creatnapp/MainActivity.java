@@ -24,7 +24,7 @@ import android.widget.RelativeLayout;
 
 
 import java.io.IOException;
-import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -72,23 +72,26 @@ public class MainActivity extends AppCompatActivity {
         wrapper = (RelativeLayout) findViewById(R.id.mainWrapper);
         SnackBarError.init( findViewById(R.id.wrapper) );
         ctx = this;
-        hA = new HistoryAdapter(ctx);
 
-        setListeners();
+        hA = new HistoryAdapter(ctx);
+        hA.setLayout(wrapper);
+
         setAnimations();
         getStrings();
 
         notification = MediaPlayer.create(this, R.raw.the_calling);
         mLocationSrv = new LocationSrv((LocationManager) this.getSystemService(Context.LOCATION_SERVICE));
 
+        mRecordButton = RecordButtonAdapter.setmRecordButton( (ImageButton) findViewById(R.id.record) );
+        mRecordButton.disable();
+
         getLastLocation();
 
     }
 
     private void setListeners() {
-        mRecordButton = RecordButtonAdapter.setmRecordButton( (ImageButton) findViewById(R.id.record) );
         mRecordButton.getImageButton().setOnTouchListener(recordListener);
-
+        hA.showBubbles();
     }
 
     private void getStrings() {
@@ -122,6 +125,7 @@ public class MainActivity extends AppCompatActivity {
                 case MotionEvent.ACTION_UP:
                     mRecordButton.stopRecord();
                     mTransitionManager.transitionTo(listen_recordedScene);
+                    hA.hideBubbles();
                     break;
             }
             return false;
@@ -144,8 +148,6 @@ public class MainActivity extends AppCompatActivity {
     public void getLastLocation() {
         boolean permission = (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED);
         if (permission) {
-
-            //searchHistories(lastKnownLocation);
             //enable repetitive scan of location
             mLocationSrv.getLocationManager().
                     requestLocationUpdates(
@@ -160,13 +162,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void searchHistories(Location location) {
         currentLocation = location;
-        String LocationStr = Double.toString(currentLocation.getLatitude()) + "," + Double.toString(currentLocation.getLongitude());
-        Log.i( "LOCATION", LocationStr );
-
-        SnackBarError.getSnackBar(LocationStr ).show();
+        mRecordButton.enable();
+        setListeners();
+        notification.start();
 
         searchData data = new searchData(Double.toString(location.getLatitude()),  Double.toString(location.getLongitude()) , "0");
-
         Call <List<History>> call = apiAdapter.getApiService().seacrhHistories(data);
         call.enqueue( new Callback<List<History>>() {
 
@@ -174,10 +174,9 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<List<History>> call, Response<List<History>> response) {
                 if( response.isSuccessful() ) {
                     if (response.body().size() > 0) {
-                        notification.start();
 
                         hA.addHistories( response.body() );
-                        hA.addToScreen(wrapper);
+                        hA.addToScreen();
 
                     } else {
                         SnackBarError.getSnackBar(NO_HISTORIES).show();
@@ -275,8 +274,11 @@ public class MainActivity extends AppCompatActivity {
                     public void onResponse(Call<History> call, Response<History> response) {
                         progress.dismiss();
                         if (response.isSuccessful()) {
+                            hA.addHistory(response.body());
                             SnackBarError.getSnackBar(UPLOADED).show();
                             mTransitionManager.transitionTo(ready_buttonScene);
+                            setListeners();
+
                         } else {
                             SnackBarError.getSnackBar("error").show();
                         }

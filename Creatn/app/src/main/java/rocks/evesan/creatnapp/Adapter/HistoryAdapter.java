@@ -19,12 +19,19 @@ public class HistoryAdapter {
 
     private ArrayList<HistoryBubble> listBubbles;
     private Context ctx;
-    private ViewGroup layout;
+    private ViewGroup layout = null;
 
     public HistoryAdapter(Context ctx) {
         listBubbles = new ArrayList<>();
         this.ctx = ctx;
     }
+
+    public void addHistory( History h) {
+        HistoryBubble hb = new HistoryBubble( ctx, h );
+        listBubbles.add(hb);
+        layout.addView( hb.getButton() );
+    }
+
     public void addHistories(List<History> list) {
         removeHistoriesFromLayout();
         listBubbles = new ArrayList<>();
@@ -34,10 +41,29 @@ public class HistoryAdapter {
         }
     }
 
-    public void addToScreen(RelativeLayout layout) {
+    public ViewGroup getLayout() {
+        return this.layout;
+    }
+
+    public void setLayout(ViewGroup layout) {
         this.layout = layout;
+    }
+
+    public void addToScreen() {
         for (int i = 0; i < listBubbles.size(); i++) {
             layout.addView( listBubbles.get(i).getButton() );
+        }
+    }
+
+    public void hideBubbles() {
+        for (int i = 0; i < listBubbles.size(); i++) {
+            listBubbles.get(i).getButton().setVisibility(View.GONE);
+        }
+    }
+
+    public void showBubbles() {
+        for (int i = 0; i < listBubbles.size(); i++) {
+            listBubbles.get(i).getButton().setVisibility(View.VISIBLE);
         }
     }
 
