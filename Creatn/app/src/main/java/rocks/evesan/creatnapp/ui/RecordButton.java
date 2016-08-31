@@ -1,14 +1,11 @@
 package rocks.evesan.creatnapp.ui;
 
 import android.content.Context;
-import android.media.AudioFormat;
+import android.graphics.PorterDuff;
 import android.media.MediaPlayer;
 import android.media.MediaRecorder;
-import android.os.Environment;
-import android.util.AttributeSet;
 import android.util.Log;
 import android.widget.ImageButton;
-import android.widget.ToggleButton;
 
 import java.io.IOException;
 
@@ -59,9 +56,10 @@ public class RecordButton {
         mRecorder.setOutputFormat(RecordConstants.OUTPUT_FORMAT);
         mRecorder.setOutputFile(RecordConstants.AUDIO_NAME);
         mRecorder.setAudioEncoder(RecordConstants.AUDIO_ENCODER);
-        //mRecorder.setAudioSamplingRate(RecordConstants.SAMPLING);
-        mRecorder.setAudioEncodingBitRate(RecordConstants.SAMPLING);
-        mRecorder.setAudioChannels(2);
+        mRecorder.setAudioEncodingBitRate(RecordConstants.SAMPLING_RATE);
+        mRecorder.setAudioSamplingRate(RecordConstants.SAMPLING_RATE);
+        mRecorder.setAudioChannels(RecordConstants.AUDIO_CHANNELS);
+        mRecorder.setMaxDuration(RecordConstants.AUDIO_DURATION);
     }
 
 
@@ -90,6 +88,14 @@ public class RecordButton {
         mRecorder.reset();
         mRecorder.release();
         this.mImageButton.setImageDrawable(this.context.getResources().getDrawable(R.drawable.record_button));
+    }
+
+    public void disable() {
+        this.mImageButton.setColorFilter(this.context.getResources().getColor(R.color.colorAccent), PorterDuff.Mode.MULTIPLY);
+    }
+
+    public void enable(){
+        this.mImageButton.clearColorFilter();
     }
 
 }
