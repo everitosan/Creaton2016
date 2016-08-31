@@ -21,12 +21,13 @@ import rocks.evesan.creatnapp.domain.Tag;
 /**
  * Created by evesan on 8/26/16.
  */
-public class HistoryBubble  {
+public class HistoryBubble  implements View.OnClickListener, MediaPlayer.OnErrorListener, MediaPlayer.OnPreparedListener{
     private Button mButton = null;
     private Context ctx = null;
     private History history = null;
     private DisplayMetrics metrics = null;
     private ProgressDialog progress;
+    private MediaPlayer mp;
 
     private static final int w = 60;
     private static final int h = 60;
@@ -44,7 +45,7 @@ public class HistoryBubble  {
         mButton = new Button(this.ctx);
         RelativeLayout.LayoutParams params =  new RelativeLayout.LayoutParams(w, h);
         params.setMargins(
-                0,
+                getRandom("left"),
                 getRandom("top"),
                 0, 0);
         mButton.setLayoutParams(params);
@@ -58,7 +59,7 @@ public class HistoryBubble  {
         if (side.equals("left") ) {
             max = 500;
         } else {
-            max = 900;
+            max = 700;
         }
 
         Random rand = new Random();
@@ -89,46 +90,42 @@ public class HistoryBubble  {
     }
 
     private void setListener() {
-        mButton.setOnClickListener( new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                MediaPlayer mp = new MediaPlayer();
-                mp.setAudioStreamType(AudioManager.STREAM_MUSIC);
-
-              try {
-                    Log.i(" -- URL --",history.getUrl());
-                    mp.setDataSource(history.getUrl());
-
-                    mp.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-                        @Override
-                        public void onPrepared(MediaPlayer mp) {
-                            mp.start();
-                            progress.dismiss();
-                        }
-                    });
-
-                    mp.prepareAsync();
-                    progress = ProgressDialog.show( ctx, "cargando", history.getName());
-                    mp.setOnErrorListener( new MediaPlayer.OnErrorListener() {
-
-                        @Override
-                        public boolean onError(MediaPlayer mp, int what, int extra) {
-                            Log.i("ERROR", "ERROR");
-                            progress.dismiss();
-                            return false;
-                        }
-                    } );
-
-
-                } catch(IOException e){
-                    Log.i("Error", e.getMessage());
-                }
-            }
-        } );
+        mButton.setOnClickListener(this);
     }
 
     public Button getButton () {
         return this.mButton;
     }
 
+    @Override
+    public void onClick(View v) {
+        mp = new MediaPlayer();
+        mp.setAudioStreamType(AudioManager.STREAM_MUSIC);
+
+        try {
+            Log.i(" -- URL --",history.getUrl().replaceFirst("https", "http") );
+            mp.setDataSource(history.getUrl().replaceFirst("https", "http"));
+            mp.setOnPreparedListener(this);
+            mp.prepareAsync();
+            progress = ProgressDialog.show( ctx, "cargando", history.getName());
+            mp.setOnErrorListener(this);
+
+
+        } catch(IOException e){
+            Log.i("-- ERROR --", e.getMessage());
+        }
+    }
+
+    @Override
+    public void onPrepared(MediaPlayer mp) {
+        mp.start();
+        progress.dismiss();
+    }
+    @Override
+    public boolean onError(MediaPlayer mp, int what, int extra) {
+        Log.i("ERROR WHAT", Integer.toString(what) );
+        Log.i("ERROR EXTRA", Integer.toString(extra) );
+        progress.dismiss();
+        return false;
+    }
 }
