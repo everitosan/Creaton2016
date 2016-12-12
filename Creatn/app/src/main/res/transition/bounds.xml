@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <transitionSet xmlns:android="http://schemas.android.com/apk/res/android"
     android:transitionOrdering="sequential">
-    <changeBounds/>
+    <changeBounds
+        android:interpolator="@android:anim/bounce_interpolator"/>
     <fade android:fadingMode ="fade_in">
         <targets>
             <target android:targetId="@+id/buttons_table"/>

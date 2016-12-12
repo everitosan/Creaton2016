@@ -7,5 +7,6 @@
         </targets>
     </fade>
 
-    <changeBounds/>
+    <changeBounds
+        android:interpolator="@android:anim/bounce_interpolator"/>
 </transitionSet>
