@@ -15,8 +15,8 @@ public class LocationSrv {
 
     public String getProviderName() {
         Criteria criteria = new Criteria();
-        criteria.setPowerRequirement(Criteria.POWER_LOW);
-        criteria.setAccuracy(Criteria.ACCURACY_FINE);
+        criteria.setPowerRequirement(Criteria.POWER_HIGH);
+        criteria.setAccuracy(Criteria.ACCURACY_MEDIUM);
         criteria.setSpeedRequired(true);
         criteria.setAltitudeRequired(false);
         criteria.setBearingRequired(false);

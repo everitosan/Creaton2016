@@ -8,5 +8,4 @@ import android.location.LocationManager;
 public class LocationConstants {
     public static final int UPDATE_LOCATION_TIME = 1000*3*60;
     public static final int UPDATE_LOCATION_DISCTANCE = 200;
-    public static final String LOCATION_PROVIDER = LocationManager.GPS_PROVIDER;
 }

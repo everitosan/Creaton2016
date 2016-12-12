@@ -2,16 +2,17 @@ package rocks.evesan.creatnapp;
 
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.media.MediaPlayer;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.transition.Scene;
+import android.transition.Transition;
 import android.transition.TransitionInflater;
 import android.transition.TransitionManager;
 import android.util.Log;
@@ -24,7 +25,6 @@ import android.widget.RelativeLayout;
 
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity {
     private ViewGroup rootScene;
     private Scene ready_buttonScene, listen_recordedScene, setTagNameScene;
     private TransitionManager mTransitionManager;
+    private Transition.TransitionListener mTransitionListener;
 
     private String NO_HISTORIES, NO_NAME, NO_TAG, UPLOADING, PLEASE_WAIT, INTERNET_ERROR, UPLOADED;
     private String Tag = null;
@@ -62,6 +63,11 @@ public class MainActivity extends AppCompatActivity {
     private RelativeLayout wrapper;
 
     private HistoryAdapter hA;
+
+    public final int MY_PERMISSIONS_RECORD = 2;
+    public final int MY_PERMISSIONS_LOCATION = 3;
+    public final int MY_PERMISSIONS_WSTORAGE = 4;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,11 +88,56 @@ public class MainActivity extends AppCompatActivity {
         notification = MediaPlayer.create(this, R.raw.the_calling);
         mLocationSrv = new LocationSrv((LocationManager) this.getSystemService(Context.LOCATION_SERVICE));
 
-        mRecordButton = RecordButtonAdapter.setmRecordButton( (ImageButton) findViewById(R.id.record) );
-        mRecordButton.disable();
+        setRecordButton();
 
-        getLastLocation();
+    }
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int grantResults[]) {
+        switch (requestCode) {
+            case MY_PERMISSIONS_RECORD:
+                if(grantResults.length > 0){
+                    if(grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                        setRecordButton();
+                    }
+                }
+                break;
+            case MY_PERMISSIONS_LOCATION:
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    getLastLocation();
+                }
+                break;
+            case MY_PERMISSIONS_WSTORAGE:
+                if(grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    setRecordButton();
+                }
+        }
+    }
+
+    private void setRecordButton(){
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_DENIED) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                    Manifest.permission.RECORD_AUDIO)) {
+                //shows why
+            } else {
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.RECORD_AUDIO},
+                        MY_PERMISSIONS_RECORD);
+            }
+        } else if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_DENIED) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+                //shows why
+            } else {
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                        MY_PERMISSIONS_WSTORAGE);
+            }
+        } else{
+            mRecordButton = RecordButtonAdapter.setmRecordButton( (ImageButton) findViewById(R.id.record) );
+            mRecordButton.disable();
+            getLastLocation();
+        }
     }
 
     private void setListeners() {
@@ -156,15 +207,24 @@ public class MainActivity extends AppCompatActivity {
                             LocationConstants.UPDATE_LOCATION_DISCTANCE,
                             locationListener);
         } else {
-            SnackBarError.getSnackBar( getResources().getString(R.string.permission_denied) ).show();
+            if(ActivityCompat.shouldShowRequestPermissionRationale( this,
+                    Manifest.permission.ACCESS_FINE_LOCATION) ) {
+            //shows why
+            } else {
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                        MY_PERMISSIONS_LOCATION );
+
+            }
         }
     }
+
 
     private void searchHistories(Location location) {
         currentLocation = location;
         mRecordButton.enable();
         setListeners();
-        notification.start();
+
 
         searchData data = new searchData(Double.toString(location.getLatitude()),  Double.toString(location.getLongitude()) , "0");
         Call <List<History>> call = apiAdapter.getApiService().seacrhHistories(data);
@@ -182,14 +242,14 @@ public class MainActivity extends AppCompatActivity {
                         SnackBarError.getSnackBar(NO_HISTORIES).show();
                     }
                 } else {
-                    SnackBarError.getSnackBar("Some random error :C").show();
+                    SnackBarError.getSnackBar(INTERNET_ERROR).show();
                 }
-
+                notification.start();
             }
 
             @Override
             public void onFailure(Call<List<History>> call, Throwable t) {
-                SnackBarError.getSnackBar( getResources().getString(R.string.network_error) ).show();
+                SnackBarError.getSnackBar( INTERNET_ERROR ).show();
             }
         } );
     }
@@ -223,7 +283,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void deleteRecord(View v) {
         mTransitionManager.transitionTo(ready_buttonScene);
-        setListeners();
+        //setListeners();
     }
 
     public void tagRecord(View v) {

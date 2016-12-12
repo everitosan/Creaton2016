@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.PorterDuff;
 import android.media.MediaPlayer;
 import android.media.MediaRecorder;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.widget.ImageButton;
 
@@ -29,6 +30,7 @@ public class RecordButton {
         this.mImageButton = imageButton;
         this.context = mImageButton.getContext();
         this.button_sound = MediaPlayer.create(this.context, R.raw.served);
+
         init();
     }
 

@@ -21,7 +21,12 @@ import rocks.evesan.creatnapp.domain.Tag;
 /**
  * Created by evesan on 8/26/16.
  */
-public class HistoryBubble  implements View.OnClickListener, MediaPlayer.OnErrorListener, MediaPlayer.OnPreparedListener{
+public class HistoryBubble  implements
+            View.OnClickListener,
+            MediaPlayer.OnErrorListener,
+            MediaPlayer.OnPreparedListener,
+            MediaPlayer.OnInfoListener{
+
     private Button mButton = null;
     private Context ctx = null;
     private History history = null;
@@ -126,6 +131,13 @@ public class HistoryBubble  implements View.OnClickListener, MediaPlayer.OnError
         Log.i("ERROR WHAT", Integer.toString(what) );
         Log.i("ERROR EXTRA", Integer.toString(extra) );
         progress.dismiss();
+        return false;
+    }
+
+    @Override
+    public boolean onInfo(MediaPlayer mp, int what, int extra) {
+        Log.i("INFO (what)", Integer.toString(what) );
+        Log.i("INFO (extra)", Integer.toString(extra) );
         return false;
     }
 }
